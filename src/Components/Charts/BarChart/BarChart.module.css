@@ -1,0 +1,11 @@
+.BarChart {
+  /* height: 200px; */
+  width: 450px;
+  overflow: hidden;
+}
+
+@media (max-width: 499px) {
+  .BarChart {
+    width: 300px;
+  }
+}

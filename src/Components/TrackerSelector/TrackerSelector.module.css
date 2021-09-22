@@ -1,0 +1,19 @@
+.TrackerSelector {
+  width: 180px;
+  height: 300px;
+  margin: 0px 5px;
+  padding: 10px;
+  overflow-y: scroll;
+  border: 1px solid grey;
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 0px; */
+}
+
+@media (max-width: 499px) {
+  .TrackerSelector {
+    height: 200px;
+  }
+}

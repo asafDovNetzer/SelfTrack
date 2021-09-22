@@ -1,0 +1,36 @@
+.Label {
+  height: 20px;
+  width: max-content;
+  padding: auto;
+  background-color: white;
+  border: none;
+  /* float: left; */
+  margin: 2px 4px;
+  transition: transform 0.3s;
+  /* color: rgba(0, 0, 0, 0.623); */
+}
+
+.Label:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.Label p {
+  font-size: 70%;
+  display: block;
+  width: max-content;
+  float: left;
+  margin: 0;
+}
+
+.Label div {
+  border: 2px solid;
+  box-sizing: border-box;
+  float: left;
+  display: block;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  /* margin: auto auto; */
+  margin-right: 4px;
+  /* transition: backgroundColor 2s; */
+}

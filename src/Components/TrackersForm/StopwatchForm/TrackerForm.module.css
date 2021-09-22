@@ -1,0 +1,18 @@
+.Field label {
+  margin-right: 10px;
+  float: left;
+}
+
+.Field textarea {
+  height: 70px;
+  width: 300px;
+}
+
+.Field {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.Field p {
+  color: gray;
+  font-size: 90%;
+}

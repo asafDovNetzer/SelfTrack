@@ -1,0 +1,21 @@
+.Login {
+  float: right;
+}
+
+.Login input {
+  /* display: inline-block; */
+  height: 20px;
+  width: 160px;
+  margin: 12px 10px;
+  border-radius: 4px;
+  border: 1.6px solid rgb(0, 66, 110);
+}
+
+.Form {
+  display: flex;
+  float: right;
+}
+
+.Control {
+  margin-right: 10px;
+}

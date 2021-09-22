@@ -1,0 +1,50 @@
+.Content {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: 1fr;
+}
+
+.Buttons {
+  margin: auto auto;
+}
+
+.Counter {
+  max-width: 360px;
+  min-width: 240px;
+  box-sizing: content-box;
+  height: max-content;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 2.5px solid rgb(128, 128, 128);
+  border-left: 6px solid;
+  outline: none;
+  float: left;
+  margin: 5px 5px;
+  transition: border 0.4s;
+}
+
+.Details {
+  display: flex;
+  flex-flow: column;
+}
+
+.Accordion {
+  padding: 0px 0px;
+  height: 80px;
+}
+
+.Counter h5 {
+  display: block;
+  margin: auto auto;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  color: rgb(43, 43, 43);
+}
+
+@media (max-width: 499px) {
+  .Counter {
+    width: 90vw;
+  }
+}

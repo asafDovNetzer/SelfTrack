@@ -1,0 +1,10 @@
+.BarChart {
+  width: 500px;
+  /* float: right; */
+}
+
+@media (max-width: 499px) {
+  .BarChart {
+    width: 320px;
+  }
+}
