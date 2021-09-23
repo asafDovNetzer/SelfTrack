@@ -13,12 +13,3 @@ body,
   margin: 0;
   width: 100vw;
 }
-
-@media (max-width: 499px) {
-  html,
-  body,
-  #root,
-  #app,
-  #app > div {
-  }
-}
