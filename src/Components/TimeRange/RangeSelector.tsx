@@ -10,13 +10,14 @@ const RangeSelector: React.FC<{
   todaysDate: Date;
 }> = React.memo(({ dateRange, setDateRange, todaysDate }) => {
   return (
-    <div className={classes.Selector}>
+    <div className={classes.Selector} style={{ zIndex: 10000 }}>
       <DateRangePicker
         value={dateRange}
         maxDate={todaysDate}
         locale="en-EN"
         onChange={setDateRange}
         clearIcon={null}
+        className={classes.Calender}
       />
     </div>
   );

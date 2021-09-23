@@ -3,6 +3,7 @@ import classes from "./LandingPage.module.css";
 import { connect, ConnectedProps } from "react-redux";
 import { LoginData } from "../../Types";
 import * as actions from "../../Store/Actions/ActionsIndex";
+import { useEffect } from "react";
 
 const LandingPage = (props: PropsFromRedux) => {
   const buttonHandler = () => {
@@ -12,6 +13,11 @@ const LandingPage = (props: PropsFromRedux) => {
     });
   };
 
+  useEffect(() => {
+    props.onLogout();
+    console.log(`back logout`);
+  }, [props]);
+
   return (
     <div className={classes.LandingPage}>
       <div className={classes.Text}>
@@ -19,7 +25,7 @@ const LandingPage = (props: PropsFromRedux) => {
           This is a portfolio app created by <mark>Asaf Dov Netzer</mark>
         </h5>
         <h5 style={{ textAlign: `center`, lineHeight: `30px` }}>
-          A tool designed to <mark>assist</mark> you <br /> with monitering your{" "}
+          A tool designed to <mark>assist</mark> you <br /> with monitoring your{" "}
           <mark>well-Being</mark> and <mark>Activity</mark>.
         </h5>
         <h5>
@@ -44,6 +50,7 @@ const LandingPage = (props: PropsFromRedux) => {
 
 const mapDispatchToProps = {
   onLogin: (data: LoginData) => actions.loginAsync(data),
+  onLogout: () => actions.logout(),
 };
 const connector = connect(null, mapDispatchToProps);
 

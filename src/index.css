@@ -1,17 +1,24 @@
 body {
-  margin: 0;
-  height: 100vh;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: "Raleway", sans-serif;
 }
 
+html,
+body,
+#root,
+#app,
+#app > div {
+  margin: 0;
+  width: 100vw;
+}
+
 @media (max-width: 499px) {
-  body {
-    width: 100vw;
-    overflow-x: hidden;
+  html,
+  body,
+  #root,
+  #app,
+  #app > div {
   }
 }

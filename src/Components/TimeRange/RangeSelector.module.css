@@ -6,3 +6,8 @@
   display: flex;
   justify-content: center;
 }
+
+.Calender {
+  z-index: 10000;
+  position: fixed;
+}

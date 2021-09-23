@@ -1,7 +1,8 @@
 .Toolbar {
   height: 56px;
   background-color: rgb(255, 255, 255);
-  width: 100%;
+  width: 100vw;
+  overflow-x: hidden;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,5 +22,11 @@
 @media (max-width: 499px) {
   .Header {
     display: none;
+  }
+}
+
+@media (min-width: 500px) {
+  .Toolbar {
+    padding-right: 20px;
   }
 }
