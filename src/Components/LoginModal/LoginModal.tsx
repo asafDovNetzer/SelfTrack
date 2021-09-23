@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import React, { useRef } from "react";
 import { connect, ConnectedProps } from "react-redux";
 import { Form, Button, Modal } from "react-bootstrap";
 import classes from "./Login.module.css";
