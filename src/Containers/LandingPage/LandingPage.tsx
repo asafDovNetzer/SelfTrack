@@ -9,16 +9,16 @@ import Footer from "../../Components/Footer/Footer";
 const LandingPage = (props: PropsFromRedux) => {
   const leftImage =
     window.innerWidth > 500 ? (
-      <img width="700px" alt="left-img" src="/Images/trackers3.png" />
+      <img width="900px" alt="left-img" src="/Images/trackers9.png" />
     ) : (
-      <img width="450px" alt="left-img" src="/Images/trackers3.png" />
+      <img width="300px" alt="left-img" src="/Images/trackers10.png" />
     );
 
   const rightImage =
     window.innerWidth > 500 ? (
-      <img width="600px" alt="left-img" src="/Images/data3.png" />
+      <img width="600px" alt="left-img" src="/Images/data4.png" />
     ) : (
-      <img width="300px" alt="left-img" src="/Images/data2.jpg" />
+      <img width="300px" alt="left-img" src="/Images/data5.png" />
     );
 
   return (
@@ -31,7 +31,7 @@ const LandingPage = (props: PropsFromRedux) => {
               <use href={`${icons}#stopwatch`} />
             </svg>
           </h1>
-          <p>Using intuitive widgets to moniter you activity and well-being.</p>
+          <p>Using intuitive widgets to monitor you activity and well-being.</p>
           <div className={classes.LeftPic}>
             <LazyLoadImage
               alt={leftImage.props.alt}
@@ -39,6 +39,7 @@ const LandingPage = (props: PropsFromRedux) => {
               width={leftImage.props.width}
               src={leftImage.props.src}
             />
+            {/* <img width="900px" alt="left-img" src="/Images/trackers9.png" /> */}
           </div>
         </div>
         <div className={classes.Par}>

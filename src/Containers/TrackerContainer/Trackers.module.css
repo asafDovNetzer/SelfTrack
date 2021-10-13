@@ -28,8 +28,8 @@
 
 .Button {
   border: none;
-  background-color: transparent;
   color: rgb(246, 110, 153);
+  background-color: transparent;
   font-size: 120%;
   font-weight: 200;
   height: 50px;
@@ -64,10 +64,12 @@
   background-color: white;
 }
 
-.ControlPanel div {
-  width: 3px;
-  border: 1.5px solid rgb(110, 16, 132);
-  background-color: rgb(110, 16, 132);
+@media (min-width: 500px) {
+  .ControlPanel div {
+    width: 3px;
+    border: 1.5px solid rgb(110, 16, 132);
+    background-color: rgb(110, 16, 132);
+  }
 }
 
 .ControlPanel {
@@ -84,7 +86,21 @@
 
 @media (max-width: 499px) {
   .Container {
-    max-height: calc(100vh - 180px);
+    max-height: calc(100vh - 160px);
     overflow-y: scroll;
+  }
+
+  .ControlPanel {
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(236, 54, 141);
+    box-sizing: content-box;
+    /* border-top: 6px solid rgb(110, 16, 132); */
+  }
+  .Button {
+    color: rgb(248, 209, 215);
+  }
+  .Button:disabled {
+    color: rgba(255, 192, 203, 0.4);
   }
 }

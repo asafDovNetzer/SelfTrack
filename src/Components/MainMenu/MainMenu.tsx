@@ -41,7 +41,7 @@ const MainMenu = (props: Props) => {
   return (
     <Aux>
       <button onClick={goToLanding} className={classes.Header}>
-        Selfi
+        Stableyez
       </button>
       {props.user && window.location.pathname === `/app` && (
         <Auxiliary>
