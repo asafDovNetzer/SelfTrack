@@ -37,16 +37,18 @@
   transition: background-color 0.2s;
 }
 
-.Button:hover {
-  background-color: rgb(110, 16, 132);
+@media (min-width: 500px) {
+  .Button:hover {
+    background-color: rgb(110, 16, 132);
+  }
+
+  .Button:disabled:hover {
+    background-color: rgba(110, 16, 132, 0.3);
+  }
 }
 
 .Button:disabled {
   color: rgba(246, 110, 153, 0.3);
-}
-
-.Button:disabled:hover {
-  background-color: rgba(110, 16, 132, 0.3);
 }
 
 .Top {

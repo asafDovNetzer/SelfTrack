@@ -14,10 +14,6 @@
     10%,
     rgb(255, 255, 255)
   );
-  /* background-image:  linear-gradient( 0deg,
-  rgb(238, 62, 194),
-  10%,
-  rgb(255, 255, 255)); */
   z-index: -1;
 }
 
@@ -35,7 +31,9 @@
 
 .Par {
   /* padding: 10px; */
-  max-width: 40vw;
+  max-width: 90vw;
+  margin-top: 90px;
+  margin-bottom: 30px;
 }
 
 .Par h1 {
@@ -49,18 +47,77 @@
   position: relative;
 }
 
-.Par h1 svg {
-  transform: translateY(-8px);
-  /* z-index: -2; */
+.Stopwatch {
+  animation: ticking 1s linear 0s infinite both;
 }
+
+.Flower {
+  animation: growing 3s linear 1s infinite both;
+}
+
+@keyframes ticking {
+  0% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+  12% {
+    transform: rotateZ(-15deg) translate(6px, -7px);
+  }
+  38% {
+    transform: rotateZ(-15deg) translate(6px, -7px);
+  }
+  50% {
+    transform: rotateZ(0deg) translate(6px, -7px);
+  }
+  62% {
+    transform: rotateZ(15deg) translate(6px, -8px);
+  }
+  88% {
+    transform: rotateZ(15deg) translate(6px, -8px);
+  }
+  100% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+}
+
+@keyframes growing {
+  0% {
+    transform: scale(0.8) translate(10px, -2px);
+    opacity: 0;
+  }
+  17% {
+    transform: scale(1.2) translate(10px, -2px);
+    opacity: 1;
+  }
+  34% {
+    transform: scale(1.2) translate(10px, -2px);
+    opacity: 1;
+  }
+  51% {
+    transform: scale(1.4) translate(10px, -2px);
+    opacity: 1;
+  }
+  68% {
+    transform: scale(1.4) translate(10px, -2px);
+    opacity: 1;
+  }
+  85% {
+    transform: scale(1.6) translate(10px, -2px);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.8) translate(10px, -2px);
+    opacity: 0;
+  }
+}
+
 .LeftPic {
   /* margin-top: 40px; */
   width: max-content;
   height: max-content;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: -40px 80px 40px 0px rgba(61, 16, 114, 0.384);
-  transform: translateX(-180px) translateY(50px) rotateX(40deg) rotateY(-45deg)
+  box-shadow: -80px 100px 30px 0px rgba(168, 21, 132, 0.5);
+  transform: translateX(-180px) translateY(-20px) rotateX(40deg) rotateY(-45deg)
     skew(8deg, 35deg);
   z-index: -1;
 }
@@ -69,34 +126,11 @@
   height: max-content;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 60px 120px 20px 0px rgba(71, 14, 104, 0.384);
-  transform: translateX(-30px) translateY(15px) rotateZ(30deg) rotateY(45deg)
+  box-shadow: 100px 120px 20px 0px rgba(132, 15, 143, 0.5);
+  transform: translateX(20px) translateY(35px) rotateZ(30deg) rotateY(45deg)
     skew(40deg, -33deg);
   z-index: -1;
   transition: transform 0.1s ease-in;
-}
-/* .RightPic:hover {
-  transform: translateX(-40px) translateY(5px) rotateZ(30deg) rotateY(45deg)
-    skew(36deg, -30deg);
-} */
-.Text {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 40px;
-  color: rgb(68, 3, 129);
-}
-
-.Text mark {
-  background-color: rgb(68, 3, 129);
-  color: white;
-  font-weight: 400;
 }
 
 @media (max-width: 499px) {
@@ -104,20 +138,18 @@
     padding: 5px;
   }
   .Par {
-    margin: 20px 0px;
+    margin: 40px 0px;
     max-width: 90vw;
   }
-  .Text h5 {
-    line-height: 35px;
-  }
+
   .LeftPic {
-    transform: translateX(-10px) translateY(0px) rotateX(40deg) rotateY(-45deg)
-      skew(8deg, 35deg);
-    box-shadow: -40px 60px 40px -10px rgba(61, 16, 114, 0.384);
+    transform: translateX(-10px) translateY(-60px) rotateX(40deg)
+      rotateY(-45deg) skew(8deg, 35deg);
+    box-shadow: -70px 60px 30px -10px rgba(148, 17, 89, 0.384);
   }
   .RightPic {
-    box-shadow: 60px 120px 20px 0px rgba(71, 14, 104, 0.384);
-    transform: translateX(0px) translateY(15px) rotateZ(30deg) rotateY(45deg)
+    box-shadow: 60px 70px 20px 0px rgba(71, 14, 104, 0.384);
+    transform: translateX(30px) translateY(15px) rotateZ(30deg) rotateY(45deg)
       skew(40deg, -33deg);
     margin-bottom: 60px;
   }

@@ -1,0 +1,138 @@
+.SliderWide {
+  margin-top: 200px;
+  margin-bottom: 200px;
+  width: 100vw;
+  height: 380px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.SilderContainer {
+  width: 500px;
+  height: 280px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 7fr 1fr;
+}
+
+.DotsWide {
+  width: 500px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Dots {
+  width: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Dots button {
+  border-radius: 50%;
+  height: 17px;
+  border: 3px solid rgb(236, 54, 141);
+  background-color: transparent;
+}
+
+.Dots button:hover {
+  background-color: rgb(236, 54, 141) !;
+}
+
+.Slider {
+  width: 1500px;
+  height: 240px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  transition: transform 0.3s;
+}
+
+.Testamony {
+  width: 500px;
+  height: 240px;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.Head {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Name {
+  text-align: center;
+}
+
+.Name h2 {
+  font-weight: 800;
+}
+
+.SlideButton {
+  border: none;
+  background-color: transparent;
+  color: rgb(236, 54, 141);
+  outline: none;
+}
+
+.Testamony strong {
+  font-size: 300%;
+  /* transform: translateY(-20px); */
+  color: rgb(68, 3, 129);
+}
+
+.Img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+}
+
+@media (min-width: 500px) {
+  .SlideButton:hover {
+    color: rgba(236, 54, 142, 0.747);
+  }
+}
+
+@media (max-width: 499px) {
+  .SliderWide {
+    width: 100vw;
+  }
+  .SilderContainer {
+    width: calc(100vw - 80px);
+    height: 360px;
+  }
+  .Testamony {
+    width: calc(100vw - 80px);
+    height: 330px;
+  }
+  .Slider {
+    width: calc(100vw * 3 - 80px * 3);
+  }
+  .DotsWide {
+    width: calc(100vw - 80px);
+  }
+  .Head {
+    width: calc(100vw - 80px);
+    justify-content: left;
+  }
+  .Testamony p {
+    /* width: calc(100vw - 70px); */
+    height: 230px;
+    width: 100%!;
+  }
+}

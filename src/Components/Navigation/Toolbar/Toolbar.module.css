@@ -1,7 +1,7 @@
 .Toolbar {
   height: 56px;
-  background-color: rgb(255, 255, 255);
   width: 100vw;
+  background-color: rgb(255, 255, 255);
   padding: 0px 8px;
   /* overflow-x: hidden; */
   display: flex;
@@ -11,6 +11,18 @@
   /* border-bottom: 0.2px solid rgb(155, 155, 155); */
   font-family: "Raleway", sans-serif;
   /* box-shadow: 1px 0px 8px 0px rgba(0, 0, 0, 0.4); */
+  z-index: 2;
+}
+
+.Header {
+  height: 56px;
+  width: 100vw;
+}
+
+.Sticky {
+  position: fixed;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .MainButton {

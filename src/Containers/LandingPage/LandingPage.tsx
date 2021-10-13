@@ -1,12 +1,11 @@
+import React from "react";
 import classes from "./LandingPage.module.css";
-import { connect, ConnectedProps } from "react-redux";
-import { LoginData, State } from "../../Types";
-import * as actions from "../../Store/Actions/ActionsIndex";
 import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Footer from "../../Components/Footer/Footer";
+import Slider from "../../Components/Slider/Slider";
 
-const LandingPage = (props: PropsFromRedux) => {
+const LandingPage = () => {
   const leftImage =
     window.innerWidth > 500 ? (
       <img width="900px" alt="left-img" src="/Images/trackers9.png" />
@@ -22,12 +21,20 @@ const LandingPage = (props: PropsFromRedux) => {
     );
 
   return (
-    <div className={classes.LandingPage}>
+    <div className={`${classes.LandingPage} landing`}>
       <div className={classes.Marketing}>
-        <div className={classes.Par}>
+        <div
+          className={classes.Par}
+          style={{ marginLeft: window.innerWidth > 500 ? `150px` : `30px` }}
+        >
           <h1>
             TRACK{" "}
-            <svg width="50" height="50" fill="currentColor">
+            <svg
+              className={classes.Stopwatch}
+              width="50"
+              height="50"
+              fill="currentColor"
+            >
               <use href={`${icons}#stopwatch`} />
             </svg>
           </h1>
@@ -39,14 +46,18 @@ const LandingPage = (props: PropsFromRedux) => {
               width={leftImage.props.width}
               src={leftImage.props.src}
             />
-            {/* <img width="900px" alt="left-img" src="/Images/trackers9.png" /> */}
           </div>
         </div>
         <div className={classes.Par}>
           <h1>
             GROW and IMPROVE{" "}
-            <svg width="50" height="50" fill="currentColor">
-              <use href={`${icons}#graph-up`} />
+            <svg
+              className={classes.Flower}
+              width="40"
+              height="40"
+              fill="currentColor"
+            >
+              <use href={`${icons}#flower1`} />
             </svg>
           </h1>
           <p>
@@ -62,36 +73,10 @@ const LandingPage = (props: PropsFromRedux) => {
           </div>
         </div>
       </div>
-      {/* <div className={classes.Marketing}>
-        <div className={classes.Text}>
-          <h5 style={{ textAlign: `center`, lineHeight: `30px` }}>
-            A tool designed to <mark>assist</mark> you <br /> with monitoring
-            your <mark>well-Being</mark> and <mark>Activity</mark>.
-          </h5>
-          <h5>
-            <mark>Ultimatly</mark> showing you what you
-            <mark>
-              <i>REALLY</i>
-            </mark>{" "}
-            should be doing...
-          </h5>
-        </div>
-      </div> */}
+      <Slider />
       {window.innerWidth > 500 ? <Footer /> : null}
     </div>
   );
 };
 
-const mapStateToProps = (state: State) => ({
-  user: state.user,
-});
-
-const mapDispatchToProps = {
-  onLogin: (data: LoginData) => actions.loginAsync(data),
-  onLogout: () => actions.logout(),
-};
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>;
-
-export default connector(LandingPage);
+export default LandingPage;
