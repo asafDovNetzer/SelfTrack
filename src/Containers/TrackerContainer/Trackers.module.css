@@ -1,19 +1,90 @@
 .Trackers {
+  /* background-color: rgb(152, 29, 135); */
   width: 100%;
-  padding: 20px;
+  min-height: calc(100vh - 56px);
+  overflow-x: hidden;
+  padding: 0px 10px;
+  /* background-image: linear-gradient(
+    0deg,
+    rgb(152, 29, 135),
+    25%,
+    rgb(255, 255, 255)
+  ); */
+  /* z-index: -4; */
+}
+
+.Container {
+  width: 100%;
+  background-color: white;
+  border-radius: 20px;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  /* flex-flow: row; */
   justify-content: left;
+  padding: 10px;
+  height: max-content;
+  z-index: -1;
+}
+
+.Button {
+  border: none;
+  background-color: transparent;
+  color: rgb(246, 110, 153);
+  font-size: 120%;
+  font-weight: 200;
+  height: 50px;
+  width: 110px;
+  transition: background-color 0.2s;
+}
+
+.Button:hover {
+  background-color: rgb(110, 16, 132);
+}
+
+.Button:disabled {
+  color: rgba(246, 110, 153, 0.3);
+}
+
+.Button:disabled:hover {
+  background-color: rgba(110, 16, 132, 0.3);
+}
+
+.Top {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.DatePicker {
+  width: max-content;
+  height: max-content;
+  background-color: white;
+}
+
+.ControlPanel div {
+  width: 3px;
+  border: 1.5px solid rgb(110, 16, 132);
+  background-color: rgb(110, 16, 132);
 }
 
 .ControlPanel {
   width: 100%;
+  position: absolute;
+  bottom: 16px;
+  left: 0;
   height: 50px;
-  background-color: rgb(228, 228, 228);
   display: flex;
   flex-wrap: wrap;
   flex-flow: row;
   justify-content: center;
-  /* justify-items: stretch; */
+}
+
+@media (max-width: 499px) {
+  .Container {
+    max-height: calc(100vh - 180px);
+    overflow-y: scroll;
+  }
 }

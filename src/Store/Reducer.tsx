@@ -4,7 +4,11 @@ import * as types from "../Types";
 import * as actionTypes from "./Actions/ActionTypes";
 
 const initialState: types.State = {
-  user: false,
+  user: null,
+  userName: ``,
+  errorMessage: null,
+  submitionState: `await`,
+  selectedView: `trackers`,
 };
 
 const reducer = (state = initialState, action: AnyAction) => {
@@ -12,12 +16,32 @@ const reducer = (state = initialState, action: AnyAction) => {
     case actionTypes.LOGIN:
       return {
         ...state,
-        user: true,
+        user: action.user,
+      };
+    case actionTypes.SET_SUBMITION_STATE:
+      return {
+        ...state,
+        submitionState: action.state,
+      };
+      case actionTypes.GO_TO:
+        return {
+          ...state,
+          selectedView: action.selected,
+        };
+    case actionTypes.SET_ERROR:
+      return {
+        ...state,
+        errorMessage: action.error,
       };
     case actionTypes.LOGOUT:
       return {
         ...state,
         user: false,
+      };
+    case actionTypes.SET_USER_NAME:
+      return {
+        ...state,
+        userName: action.userName,
       };
     default:
       return state;

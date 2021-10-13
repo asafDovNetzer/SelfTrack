@@ -1,0 +1,38 @@
+.SideDrawer {
+  width: 70vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  padding: 10px;
+  transform: translateX(100%);
+  transition: transform 0.15s;
+  z-index: 2;
+}
+
+.Content {
+  width: 100%;
+  height: max-content;
+  /* min-height: ; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.Backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+@media (min-width: 500px) {
+  .SideDrawer {
+    display: none!;
+  }
+}

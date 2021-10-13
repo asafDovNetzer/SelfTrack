@@ -1,60 +1,80 @@
 .LandingPage {
   width: 100vw;
   min-height: 100vh;
+  /* overflow-x: hidden; */
   height: max-content;
-  background-image: linear-gradient(
-    320deg,
-    rgb(245, 231, 194),
-    rgb(62, 201, 143)
-  );
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  row-gap: 10px;
-  /* flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-evenly;
-  overflow: hidden; */
-}
-
-.Demo {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  text-align: center;
+  background-image: linear-gradient(
+    0deg,
+    rgb(238, 62, 194),
+    10%,
+    rgb(255, 255, 255)
+  );
+  z-index: -1;
 }
 
-.Demo button {
-  width: 180px;
-  height: 50px;
-  background-color: rgb(143, 31, 143);
-  color: rgb(236, 227, 195);
-  border: none;
-  letter-spacing: 2px;
-  border-radius: 30px;
-  font-size: 130%;
-  font-weight: 200;
-  box-shadow: 1px 13px 10px 3px rgba(14, 14, 14, 0.507);
-  margin-bottom: 30px;
-  padding-bottom: 4px;
-  transition: transform 0.4s, box-shadow 0.4s;
+.Marketing {
+  width: 100%;
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Raleway", sans-serif;
+  padding: 20px;
 }
 
-.Demo button:hover {
-  transform: translateY(-7px);
-  box-shadow: 1px 22px 10px 3px rgba(14, 14, 14, 0.507);
+.Par {
+  /* padding: 10px; */
+  max-width: 40vw;
 }
 
-.Demo p {
-  font-size: 120%;
-  font-weight: 100;
+.Par h1 {
+  font-size: 260%;
+  font-weight: 800;
+  color: rgb(68, 3, 129);
 }
 
+.Par p {
+  z-index: 1;
+  position: relative;
+}
+
+.Par h1 svg {
+  transform: translateY(-8px);
+  /* z-index: -2; */
+}
+.LeftPic {
+  /* margin-top: 40px; */
+  width: max-content;
+  height: max-content;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: -40px 80px 40px 0px rgba(61, 16, 114, 0.384);
+  transform: translateX(-90px) translateY(50px) rotateX(40deg) rotateY(-45deg)
+    skew(8deg, 35deg);
+  z-index: -1;
+}
+.RightPic {
+  width: max-content;
+  height: max-content;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 60px 120px 20px 0px rgba(71, 14, 104, 0.384);
+  transform: translateX(-30px) translateY(15px) rotateZ(30deg) rotateY(45deg)
+    skew(40deg, -33deg);
+  z-index: -1;
+  transition: transform 0.1s ease-in;
+}
+/* .RightPic:hover {
+  transform: translateX(-40px) translateY(5px) rotateZ(30deg) rotateY(45deg)
+    skew(36deg, -30deg);
+} */
 .Text {
   width: 100%;
   height: 100%;
@@ -66,14 +86,35 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 40px;
+  color: rgb(68, 3, 129);
 }
 
 .Text mark {
-  background-color: rgb(236, 227, 195);
+  background-color: rgb(68, 3, 129);
+  color: white;
+  font-weight: 400;
 }
 
 @media (max-width: 499px) {
+  .Marketing {
+    padding: 5px;
+  }
+  .Par {
+    margin: 40px 0px;
+    max-width: 90vw;
+  }
   .Text h5 {
     line-height: 35px;
+  }
+  .LeftPic {
+    transform: translateX(-80px) translateY(0px) rotateX(40deg) rotateY(-45deg)
+      skew(8deg, 35deg);
+    box-shadow: -40px 60px 40px -10px rgba(61, 16, 114, 0.384);
+  }
+  .RightPic {
+    box-shadow: 60px 120px 20px 0px rgba(71, 14, 104, 0.384);
+    transform: translateX(10px) translateY(15px) rotateZ(30deg) rotateY(45deg)
+      skew(40deg, -33deg);
+    margin-bottom: 30px;
   }
 }

@@ -1,6 +1,8 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import { FacebookAuthProvider, GoogleAuthProvider } from "firebase/auth";
+
 // import { setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const config = {
@@ -15,6 +17,8 @@ const config = {
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
+export const googleProvider = new GoogleAuthProvider();
+export const facebookProvider = new FacebookAuthProvider();
 // setPersistence(auth, browserSessionPersistence)
 //   .then()
 //   .catch((err) => console.log(err));

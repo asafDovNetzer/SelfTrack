@@ -1,44 +1,21 @@
-.Stopwatch {
-  max-width: 360px;
-  min-width: 240px;
-  /* height: 78px; */
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  border: 2.5px solid rgb(128, 128, 128);
-  border-left: 6px solid;
-  outline: none;
-  float: left;
-  margin: 5px 5px;
-  box-sizing: border-box;
-  transition: border 0.4s;
-}
-
 .ExpandButton {
   border: none;
   background-color: white;
   border-radius: 50%;
-  height: 20px;
+  height: max-content;
+  transform: translateY(-5px);
 }
 
 .Content {
   width: 100%;
+  height: 100%;
   display: grid;
   /* padding: 6px; */
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 1fr 2fr;
 }
 
-.Details {
-  display: flex;
-  flex-flow: column;
-}
-
-.Accordion {
-  padding: 0px 0px;
-  height: 80px;
-}
-
-.Stopwatch h5 {
+.Header {
   display: block;
   margin: auto auto;
   grid-column-start: 2;
@@ -46,6 +23,7 @@
   text-align: center;
   font-family: "Raleway", sans-serif;
   color: rgb(43, 43, 43);
+  /* font-weight: 400; */
 }
 
 .MainButton:disabled svg {
@@ -70,17 +48,12 @@
 
 .MainButton svg {
   margin: none;
-  color: rgb(0, 92, 128);
+  color: rgb(4, 72, 99);
+  /* color: black; */
   transition: transform 0.3s;
   /* outline: none !important; */
 }
 
 .MainButton:hover svg {
   transform: scale(1.05);
-}
-
-@media (max-width: 499px) {
-  .Stopwatch {
-    width: 90vw;
-  }
 }

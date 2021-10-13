@@ -8,9 +8,6 @@ import {
   createDatesFromRange,
 } from "../../HalperFunctions/ArrangeEntries";
 import "react-calendar/dist/Calendar.css";
-// import Checkbox from "@material-ui/core/Checkbox";
-// import FormGroup from "@material-ui/core/FormGroup";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const ChartSelect: React.FC<{
   dateRange: Date[];
@@ -41,41 +38,41 @@ const ChartSelect: React.FC<{
       Map<string, types.CounterEntry[]>
     >(new Map());
     const [dateStrings, setDateStrings] = useState<string[]>([]);
-    const [barLineChart, setBarLineChart] = useState({
-      display: true,
-      disabled: false,
-    });
-    const [pieChart, setPieChart] = useState({
-      display: false,
-      disabled: true,
-    });
-    const [areaChart] = useState({
-      display: false,
-      disabled: true,
-    });
+    // const [barLineChart, setBarLineChart] = useState({
+    //   display: true,
+    //   disabled: false,
+    // });
+    // const [pieChart, setPieChart] = useState({
+    //   display: false,
+    //   disabled: true,
+    // });
+    // const [areaChart] = useState({
+    //   display: false,
+    //   disabled: true,
+    // });
 
     const userDb = useContext(DbContext);
     const todaysDate = useContext(DateContext);
 
     console.log(`rendering chart selector`);
 
-    useEffect(() => {
-      const fromTimestamp: number = dateRange[0].getTime();
-      const toTimestamp: number = dateRange[1].getTime();
-      const dayLengthInMilli: number = 24 * 60 * 60 * 1000;
+    // useEffect(() => {
+    //   const fromTimestamp: number = dateRange[0].getTime();
+    //   const toTimestamp: number = dateRange[1].getTime();
+    //   const dayLengthInMilli: number = 24 * 60 * 60 * 1000;
 
-      if (fromTimestamp + dayLengthInMilli > toTimestamp) {
-        setPieChart({
-          display: true,
-          disabled: false,
-        });
-      } else {
-        setPieChart({
-          display: false,
-          disabled: true,
-        });
-      }
-    }, [dateRange]);
+    //   if (fromTimestamp + dayLengthInMilli > toTimestamp) {
+    //     setPieChart({
+    //       display: true,
+    //       disabled: false,
+    //     });
+    //   } else {
+    //     setPieChart({
+    //       display: false,
+    //       disabled: true,
+    //     });
+    //   }
+    // }, [dateRange]);
 
     useEffect(() => {
       const dates = createDatesFromRange(dateRange);
@@ -179,21 +176,18 @@ const ChartSelect: React.FC<{
             label="Area Chart"
           />
         </FormGroup> */}
-        {barLineChart.display ? (
-          <BarLineChartPreAmp
-            stopwatchEntries={stopwatchEntries}
-            checkerEntries={checkerEntries}
-            raterEntries={raterEntries}
-            counterEntries={counterEntries}
-            stopwatches={stopwatches}
-            raters={raters}
-            checkers={checkers}
-            counters={counters}
-            selectedTrackers={selectedTrackers}
-            dateStrings={dateStrings}
-          />
-        ) : null}
-        {pieChart.display ? null : null}
+        <BarLineChartPreAmp
+          stopwatchEntries={stopwatchEntries}
+          checkerEntries={checkerEntries}
+          raterEntries={raterEntries}
+          counterEntries={counterEntries}
+          stopwatches={stopwatches}
+          raters={raters}
+          checkers={checkers}
+          counters={counters}
+          selectedTrackers={selectedTrackers}
+          dateStrings={dateStrings}
+        />
       </div>
     );
   }

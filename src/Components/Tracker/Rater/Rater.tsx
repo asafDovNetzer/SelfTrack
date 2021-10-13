@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import * as types from "../../../Types";
 import Rating from "@material-ui/lab/Rating";
 import classes from "./Rater.module.css";
+import trackerClasses from "../Tracker.module.css";
 import DbContext from "../../../Context/DbContext";
 import { connect, ConnectedProps } from "react-redux";
 import {
@@ -91,21 +92,15 @@ const Rater = (props: Props) => {
     <div
       onClick={select}
       style={{
-        borderRightColor: props.isSelected
-          ? props.rater.color
-          : `rgb(128, 128, 128)`,
-        borderTopColor: props.isSelected
-          ? props.rater.color
-          : `rgb(128, 128, 128)`,
-        borderBottomColor: props.isSelected
-          ? props.rater.color
-          : `rgb(128, 128, 128)`,
-        borderLeftColor: props.rater.color,
+        borderColor: props.rater.color,
+        boxShadow: props.isSelected
+          ? `1px 1px 10px 1px ${props.rater.color}`
+          : `none`,
       }}
-      className={classes.Rater}
+      className={trackerClasses.Tracker}
     >
       <div className={classes.Content}>
-        <h5>{props.rater.name}</h5>
+        <h5 className={classes.Header}>{props.rater.name}</h5>
         <Rating
           className={classes.Rating}
           name={props.rater.id}

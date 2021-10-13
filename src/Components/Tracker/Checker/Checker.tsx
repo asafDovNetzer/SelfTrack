@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import * as types from "../../../Types";
+import trackerClasses from "../Tracker.module.css";
 import classes from "./Checker.module.css";
 import DbContext from "../../../Context/DbContext";
 import Checkbox from "@material-ui/core/Checkbox";
@@ -94,28 +95,24 @@ const Checker = (props: Props) => {
   return (
     <div
       onClick={select}
-      className={classes.Checker}
+      className={trackerClasses.Tracker}
       style={{
-        borderRightColor: props.isSelected
-          ? props.checker.color
-          : `rgb(128, 128, 128)`,
-        borderTopColor: props.isSelected
-          ? props.checker.color
-          : `rgb(128, 128, 128)`,
-        borderBottomColor: props.isSelected
-          ? props.checker.color
-          : `rgb(128, 128, 128)`,
-        borderLeftColor: props.checker.color,
+        borderColor: props.checker.color,
+        boxShadow: props.isSelected
+          ? `1px 1px 10px 1px ${props.checker.color}`
+          : `none`,
       }}
     >
       <div className={classes.Content}>
-        <h5>{props.checker.name}</h5>
-        <Checkbox
-          checked={isChecked}
-          onChange={checkerHandler}
-          className="main-button"
-          color="primary"
-        />
+        <h5 className={classes.Header}>{props.checker.name}</h5>
+        <div className={classes.CheckBox}>
+          <Checkbox
+            checked={isChecked}
+            onChange={checkerHandler}
+            className="main-button"
+            color="primary"
+          />
+        </div>
       </div>
     </div>
   );

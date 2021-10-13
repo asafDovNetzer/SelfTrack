@@ -1,38 +1,12 @@
-.Rater {
-  max-width: 360px;
-  min-width: 270px;
-  height: max-content;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  border: 2.5px solid rgb(128, 128, 128);
-  border-left: 6px solid;
-  outline: none;
-  float: left;
-  margin: 5px 5px;
-  transition: border 0.4s;
-}
-
 .Content {
   width: 100%;
+  height: 100%;
   display: grid;
   grid-template-rows: 1fr 2fr;
 }
-
-.Details {
-  display: flex;
-  flex-flow: column;
-}
-
-.Accordion {
-  padding: 0px 0px;
-  height: 80px;
-}
-
-.Rater h5 {
+.Header {
   display: block;
   margin: auto auto;
-  /* grid-column-end: 3; */
-  /* grid-column-start: 1; */
   text-align: center;
   font-family: "Raleway", sans-serif;
   color: rgb(43, 43, 43);
@@ -44,10 +18,4 @@
 
 .Rating label {
   display: block;
-}
-
-@media (max-width: 499px) {
-  .Rater {
-    width: 90vw;
-  }
 }

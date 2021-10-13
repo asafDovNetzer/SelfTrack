@@ -10,6 +10,13 @@ import rootReducer from "./Store/Reducer";
 import DbProvider from "./Provider/DbProvider";
 import DateProvider from "./Provider/DateProvider";
 import { BrowserRouter } from "react-router-dom";
+import {
+  ThemeProvider,
+  createTheme,
+  // makeStyles,
+} from "@material-ui/core/styles";
+
+const theme = createTheme();
 
 const store = createStore(
   rootReducer,
@@ -21,7 +28,9 @@ ReactDOM.render(
     <DbProvider>
       <DateProvider>
         <BrowserRouter>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </BrowserRouter>
       </DateProvider>
     </DbProvider>

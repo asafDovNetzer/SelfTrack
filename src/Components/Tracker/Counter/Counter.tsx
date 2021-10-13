@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import * as types from "../../../Types";
 import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
+import trackerClasses from "../Tracker.module.css";
+
 import classes from "./Counter.module.css";
 import DbContext from "../../../Context/DbContext";
 import { Button, ButtonGroup } from "@material-ui/core";
@@ -103,22 +105,16 @@ const Counter = (props: Props) => {
   return (
     <div
       onClick={select}
-      className={classes.Counter}
+      className={trackerClasses.Tracker}
       style={{
-        borderRightColor: props.isSelected
-          ? props.counter.color
-          : `rgb(128, 128, 128)`,
-        borderTopColor: props.isSelected
-          ? props.counter.color
-          : `rgb(128, 128, 128)`,
-        borderBottomColor: props.isSelected
-          ? props.counter.color
-          : `rgb(128, 128, 128)`,
-        borderLeftColor: props.counter.color,
+        borderColor: props.counter.color,
+        boxShadow: props.isSelected
+          ? `1px 1px 10px 1px ${props.counter.color}`
+          : `none`,
       }}
     >
       <div className={classes.Content}>
-        <h5>{props.counter.name}</h5>
+        <h5 className={classes.Header}>{props.counter.name}</h5>
         <ButtonGroup className={classes.Buttons} color="primary">
           <Button className="main-button   plus" onClick={changeCount}>
             <svg width="20" height="20" fill="currentColor">

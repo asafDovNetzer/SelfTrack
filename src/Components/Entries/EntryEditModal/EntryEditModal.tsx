@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Modal } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
 import * as types from "../../../Types";
 import EntryEditForm from "../StopwatchEntries/EntryEditForm";
 import { db } from "../../../Firebase";
 import DbContext from "../../../Context/DbContext";
+import Modal from "../../UI/Modal/Modal";
 // import DateContext from "../../../Context/DateContext";
 
 const EntryEditModal: React.FC<{
@@ -24,6 +25,7 @@ const EntryEditModal: React.FC<{
     } else {
       changeEntry(from, to);
     }
+    closeHandler();
   };
 
   const changeEntry = (from: number, to: number) => {
@@ -49,10 +51,12 @@ const EntryEditModal: React.FC<{
 
   return (
     <Modal show={show} onHide={closeHandler}>
-      <Modal.Header>Change the beginning and ending</Modal.Header>
-      <Modal.Body>
+      <div style={{ width: `100%`, height: `60px` }}>
+        Change the beginning and ending
+      </div>
+      <div style={{ width: `100%`, height: `max-content` }}>
         <EntryEditForm entry={entry} submitHandler={submit} />
-      </Modal.Body>
+      </div>
     </Modal>
   );
 };

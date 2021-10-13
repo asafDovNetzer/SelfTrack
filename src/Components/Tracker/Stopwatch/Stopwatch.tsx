@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import * as types from "../../../Types";
 import classes from "./Stopwatch.module.css";
+import trackerClasses from "../Tracker.module.css";
 import Clock from "../../Clock/Clock";
 import DbContext from "../../../Context/DbContext";
 import DateContext from "../../../Context/DateContext";
@@ -142,18 +143,12 @@ const Stopwatch = (props: Props) => {
   return (
     <div
       onClick={select}
-      className={classes.Stopwatch}
+      className={trackerClasses.Tracker}
       style={{
-        borderRightColor: props.isSelected
-          ? props.stopwatch.color
-          : `rgb(128, 128, 128)`,
-        borderTopColor: props.isSelected
-          ? props.stopwatch.color
-          : `rgb(128, 128, 128)`,
-        borderBottomColor: props.isSelected
-          ? props.stopwatch.color
-          : `rgb(128, 128, 128)`,
-        borderLeftColor: props.stopwatch.color,
+        borderColor: props.stopwatch.color,
+        boxShadow: props.isSelected
+          ? `1px 1px 10px 1px ${props.stopwatch.color}`
+          : `none`,
       }}
     >
       <div className={classes.Content}>
@@ -166,7 +161,7 @@ const Stopwatch = (props: Props) => {
             <use href={`${icons}#${isRunning ? `pause` : `play`}-circle`} />
           </svg>
         </button>
-        <h5>{props.stopwatch.name}</h5>
+        <h5 className={classes.Header}>{props.stopwatch.name}</h5>
         <Clock isRunning={isRunning} accum={accum} lastEntry={lastEntry} />
         <button
           onClick={() => setExpanded(!expanded)}

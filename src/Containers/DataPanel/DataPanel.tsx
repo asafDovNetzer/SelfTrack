@@ -16,7 +16,7 @@ const DataPanel: React.FC<{
 }> = React.memo(({ stopwatches, raters, checkers, counters }) => {
   const todaysDate = useContext(DateContext);
   // console.log(checkers);
-  const [position, setPosition] = useState<string>(`left`);
+  // const [position, setPosition] = useState<string>(`left`);
 
   const [selectedTrackers, setSelectedTrackers] = useState<types.Tracker[]>([]);
 
@@ -31,11 +31,11 @@ const DataPanel: React.FC<{
 
   console.log(`rendering DataPanel`);
 
-  const changePosition = () => {
-    const newPosition = position === `left` ? `right` : `left`;
+  // const changePosition = () => {
+  //   const newPosition = position === `left` ? `right` : `left`;
 
-    setPosition(newPosition);
-  };
+  //   setPosition(newPosition);
+  // };
 
   useEffect(() => {
     if (!todaysDate) return;
@@ -110,12 +110,12 @@ const DataPanel: React.FC<{
 
   return (
     <div className={classes.DataPanel}>
-      <div
-        className={classes.Chart}
-        style={{
-          transform: `translateX(-${position === `left` ? `0` : `186`}px)`,
-        }}
-      >
+      <RangeSelector
+        todaysDate={todaysDate!}
+        dateRange={dateRange}
+        setDateRange={setDateRange}
+      />
+      <div className={classes.Main}>
         <TrackerSelector
           raters={raters}
           stopwatches={stopwatches}
@@ -124,26 +124,14 @@ const DataPanel: React.FC<{
           handler={selectTracker}
           selectedTrackers={selectedTrackers}
         />
-        <div onClick={changePosition} className={classes.Divider}>
-          <svg width="17" height="17" fill="currentColor">
-            <use href={`${icons}#chevron-compact-${position}`} />
-          </svg>
-        </div>
-        <div>
-          <RangeSelector
-            todaysDate={todaysDate!}
-            dateRange={dateRange}
-            setDateRange={setDateRange}
-          />
-          <ChartSelect
-            dateRange={dateRange}
-            stopwatches={stopwatches}
-            selectedTrackers={selectedTrackers}
-            raters={raters}
-            checkers={checkers}
-            counters={counters}
-          />
-        </div>
+        <ChartSelect
+          dateRange={dateRange}
+          stopwatches={stopwatches}
+          selectedTrackers={selectedTrackers}
+          raters={raters}
+          checkers={checkers}
+          counters={counters}
+        />
       </div>
     </div>
   );

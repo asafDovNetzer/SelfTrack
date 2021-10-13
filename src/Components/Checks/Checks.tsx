@@ -17,7 +17,6 @@ const Checks: React.FC<{
             checked={element.isChecked}
             size="small"
             onChange={() => {}}
-            //   className="main-button"
             disabled
             color={element.color}
           />

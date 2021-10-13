@@ -17,7 +17,7 @@ const RangeSelector: React.FC<{
         locale="en-EN"
         onChange={setDateRange}
         clearIcon={null}
-        className={classes.Calender}
+        // className={classes.Calender}
       />
     </div>
   );

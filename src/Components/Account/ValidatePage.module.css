@@ -1,0 +1,42 @@
+.ValidatePage {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.Page {
+  min-height: 100vh;
+}
+
+.ValidatePage h1 {
+  font-weight: 200;
+  margin: 20px;
+}
+
+.ValidatePage mark {
+  background-color: rgb(253, 232, 236);
+  padding: 6px;
+  color: rgb(68, 3, 129);
+}
+
+.ValidatePage p {
+  margin: 20px;
+}
+
+.ReloadButton {
+  border: 4px solid pink;
+  border-radius: 50%;
+  background-color: purple;
+  color: pink;
+  padding: 2px;
+  margin: 10px;
+}
+
+.BackgroundlessButton {
+  color: purple;
+  border: none;
+  background-color: transparent;
+}

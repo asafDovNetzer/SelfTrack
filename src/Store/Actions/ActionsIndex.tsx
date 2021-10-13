@@ -1,8 +1,16 @@
-export { loginAsync, loginSuccess, logout } from "./AuthActions";
+export {
+  loginAsync,
+  loginSuccess,
+  logout,
+  signupAsync,
+  loginGoogle,
+  loginFacebook,
+  setUserName,
+  checkEmailVerification,
+} from "./AuthActions";
 
-// export { createNewStopwatch, handleStopwatchAsync } from "./TrackerActions";
+export { setError, goTo } from "./UxActions";
 
-// export {
-//   saveStopwatchesToState,
-//   createNewStopwatchAsync,
-// } from "./StorageActions";
+export { setSubmitionState } from "./FormActions";
+
+export { createNewTracker } from "./Creator";

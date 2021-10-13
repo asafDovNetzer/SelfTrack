@@ -1,39 +1,32 @@
 .Content {
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  /* grid-template-rows: 1fr 2fr; */
+  /* grid-template-columns: 1fr; */
 }
 
 .Buttons {
-  margin: auto auto;
+  /* margin: auto auto; */
+  /* outline: none; */
+  border: 3px solid rgb(129, 129, 129);
+  border-radius: 10px;
 }
 
-.Counter {
-  max-width: 360px;
-  min-width: 240px;
-  box-sizing: content-box;
-  height: max-content;
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-  border: 2.5px solid rgb(128, 128, 128);
-  border-left: 6px solid;
+/* .Buttons button,
+div {
+  border: none;
   outline: none;
-  float: left;
-  margin: 5px 5px;
-  transition: border 0.4s;
-}
+} */
 
-.Details {
-  display: flex;
-  flex-flow: column;
-}
+/* .Buttons button:hover {
+  background-color: rgb(131, 131, 131);
+} */
 
-.Accordion {
-  padding: 0px 0px;
-  height: 80px;
-}
-
-.Counter h5 {
+.Header {
   display: block;
   margin: auto auto;
   grid-column-start: 1;
@@ -41,10 +34,4 @@
   text-align: center;
   font-family: "Raleway", sans-serif;
   color: rgb(43, 43, 43);
-}
-
-@media (max-width: 499px) {
-  .Counter {
-    width: 90vw;
-  }
 }

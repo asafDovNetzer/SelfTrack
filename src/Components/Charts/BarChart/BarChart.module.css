@@ -6,6 +6,7 @@
 
 @media (max-width: 499px) {
   .BarChart {
-    width: 300px;
+    width: 320px;
+    height: 50px;
   }
 }

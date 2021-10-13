@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import DbContext from "../Context/DbContext";
 import { auth, db } from "../Firebase";
-import * as types from "../Types";
+import { DbRef, User } from "../Types";
 import { connect, ConnectedProps } from "react-redux";
 import * as actions from "../Store/Actions/ActionsIndex";
 
 const DbProvider = (props: Props) => {
-  const [userDb, setUserDb] = useState<types.DbRef>(null);
+  const [userDb, setUserDb] = useState<DbRef>(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -14,9 +14,11 @@ const DbProvider = (props: Props) => {
       if (!user) {
         props.noActiveUser();
       } else {
+        console.log(user);
+
         const userDb = db.collection(`users`).doc(user!.uid);
         setUserDb(userDb);
-        props.activeUser();
+        props.activeUser(user);
       }
     });
 
@@ -29,7 +31,7 @@ const DbProvider = (props: Props) => {
 };
 
 const mapDispatchToProps = {
-  activeUser: () => actions.loginSuccess(),
+  activeUser: (user: User) => actions.loginSuccess(user),
   noActiveUser: () => actions.logout(),
 };
 const connector = connect(null, mapDispatchToProps);

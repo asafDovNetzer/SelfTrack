@@ -1,7 +1,21 @@
 .Footer {
   /* position: absolute; */
   /* bottom: 0; */
+  font-family: "Raleway", sans-serif;
   width: 100%;
-  height: 90px;
-  background-color: rgb(189, 189, 189);
+  height: 80px;
+  color: rgb(67, 6, 95);
+  padding: 10px;
+  background-color: rgb(81, 229, 255);
+  border-top: 10px solid rgb(68, 3, 129);
+}
+
+@media (max-width: 499px) {
+  .Footer {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
 }

@@ -22,10 +22,10 @@ const TrackerSelector: React.FC<{
 }> = React.memo(
   ({ checkers, raters, stopwatches, handler, selectedTrackers, counters }) => {
     const [expanded, setExpanded] = useState<string[]>([
-      // `stopwatches`,
+      `stopwatches`,
       `raters`,
-      // `checkers`,
-      // `counters`,
+      `checkers`,
+      `counters`,
     ]);
 
     const handleToggle = (event: any, nodeIds: string[]) => {

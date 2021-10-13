@@ -123,42 +123,6 @@ export const trackerConverter = {
   },
 };
 
-export const createNewTracker = (
-  userDb: types.DbRef,
-  type: string,
-  name: string,
-  description: string,
-  color: string,
-  size: string
-) => {
-  let tracker: types.Tracker;
-
-  switch (type) {
-    case `stopwatch`:
-      tracker = new Stopwatch(name, description, color);
-      break;
-    case `checker`:
-      tracker = new Checker(name, description, color);
-      break;
-    case `counter`:
-      tracker = new Counter(name, description, color, +size);
-      break;
-    default:
-      tracker = new Rater(name, description, color);
-      break;
-  }
-
-  userDb!
-    .collection(`trackers`)
-    .doc(tracker!.id)
-    .withConverter(trackerConverter)
-    .set(tracker!)
-    .then(() => {})
-    .catch((err: any) => {
-      console.log(err);
-    });
-};
-
 export const updateTracker = (
   userDb: types.DbRef,
   id: string,

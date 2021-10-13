@@ -1,10 +1,13 @@
 .BarChart {
-  width: 500px;
-  /* float: right; */
+  width: 600px;
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 @media (max-width: 499px) {
   .BarChart {
-    width: 320px;
+    width: 100vw;
+    padding: 5px;
   }
 }

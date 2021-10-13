@@ -6,7 +6,7 @@ import DateContext from "../../../Context/DateContext";
 import { db } from "../../../Firebase";
 import classes from "./StopwatchEntries.module.css";
 // import Entry from "./StopwatchEntry/StopwatchEntry";
-import { Modal } from "react-bootstrap";
+// import { Modal } from "react-bootstrap";
 import BarChartPreamp from "../../Charts/BarChart/BarChartPreAmp";
 import { DataGrid, GridColDef, GridSelectionModel } from "@mui/x-data-grid";
 import { ButtonGroup, Button } from "@material-ui/core";
@@ -16,6 +16,7 @@ import {
   reletiveTimestampToString,
 } from "../../../HalperFunctions/HandleStopwatches";
 import EntryEditModal from "../EntryEditModal/EntryEditModal";
+import Modal from "../../UI/Modal/Modal";
 
 const Entries: React.FC<{
   show: boolean;
@@ -172,47 +173,6 @@ const Entries: React.FC<{
       .catch((err: any) => console.log(err));
   };
 
-  const newEntryHandler1 = (from: number, to: number) => {
-    let fromSuccess: boolean = false;
-    let toSuccess: boolean = false;
-
-    userDb!
-      .collection(`entries`)
-      .add({
-        timestamp: from,
-        trackerId: stopwatch.id,
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        day: date.getDate(),
-        type: `stopwatchEntry`,
-      })
-      .then(() => {
-        fromSuccess = true;
-        if (toSuccess) {
-          setModalDisplay(false);
-        }
-      })
-      .catch((err: any) => console.log(err));
-
-    userDb!
-      .collection(`entries`)
-      .add({
-        timestamp: to,
-        trackerId: stopwatch.id,
-        year: date.getFullYear(),
-        month: date.getMonth(),
-        day: date.getDate(),
-        type: `stopwatchEntry`,
-      })
-      .then(() => {
-        toSuccess = true;
-        if (fromSuccess) {
-          setModalDisplay(false);
-        }
-      })
-      .catch((err: any) => console.log(err));
-  };
-
   const handleOpen = () => {
     const realIndex: number =
       arrangedEntries.length - (selectionModel[0] as number);
@@ -268,11 +228,11 @@ const Entries: React.FC<{
   };
 
   return (
-    <Modal size="xl" show={show} onHide={closeHandler}>
-      <Modal.Header>
+    <Modal show={show} onHide={closeHandler}>
+      <div className={classes.Header}>
         <BarChartPreamp entries={entries} stopwatch={stopwatch} date={date} />
-      </Modal.Header>
-      <Modal.Body>
+      </div>
+      <div className={classes.body}>
         <div className={classes.Entries}>
           <ButtonGroup variant="text" color="primary">
             <Button
@@ -304,19 +264,19 @@ const Entries: React.FC<{
               setSelectionModel(newSelectionModel);
             }}
             selectionModel={selectionModel}
-            // disableColumnFilter
-            // disableColumnMenu
             headerHeight={40}
           />
-          <EntryEditModal
-            show={modalDisplay}
-            entry={EntryToEdit}
-            closeHandler={handleClose}
-            newEntryHandler={newEntryHandler}
-            editHandler={editHandler}
-          />
+          {modalDisplay ? (
+            <EntryEditModal
+              show={modalDisplay}
+              entry={EntryToEdit}
+              closeHandler={handleClose}
+              newEntryHandler={newEntryHandler}
+              editHandler={editHandler}
+            />
+          ) : null}
         </div>
-      </Modal.Body>
+      </div>
     </Modal>
   );
 });

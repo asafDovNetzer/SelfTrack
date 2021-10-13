@@ -1,7 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import Trackers from "./Containers/TrackerContainer/TrackerContainer";
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, QuerySnapshot } from "firebase/firestore";
 import DataPanel from "./Containers/DataPanel/DataPanel";
+import classes from "./Components/UI/General.module.css";
 import Aux from "./hoc/Auxiliary";
 import { State } from "./Types";
 import { connect, ConnectedProps } from "react-redux";
@@ -15,14 +16,15 @@ import {
 import DbContext from "./Context/DbContext";
 import DateContext from "./Context/DateContext";
 import * as types from "./Types";
-import GenarateFakeData from "./FakeData/GenarateFakeData";
-import LoginModal from "./Components/LoginModal/LoginModal";
+// import Footer from "./Components/Footer/Footer"
+// import LoginModal from "./Components/AuthModals/LoginModal/LoginModal";
 
 const Control = (props: PropsFromRedux) => {
   const [stopwatches, setStopwatches] = useState<Stopwatch[]>([]);
   const [raters, setRaters] = useState<Rater[]>([]);
   const [checkers, setCheckers] = useState<Checker[]>([]);
   const [counters, setCounters] = useState<Counter[]>([]);
+  const [isEmpty, setIsEmpty] = useState<boolean>(false);
 
   const userDb = useContext(DbContext);
   const todaysDate = useContext(DateContext);
@@ -35,11 +37,16 @@ const Control = (props: PropsFromRedux) => {
     const unsubscribe = onSnapshot(
       collection(userDb!, "trackers"),
       {},
-      (snapshot: any) => {
+      (snapshot: QuerySnapshot) => {
         const stopwatches: Stopwatch[] = [];
         const raters: Rater[] = [];
         const checkers: Checker[] = [];
         const counters: Counter[] = [];
+
+        // console.log(snapshot.empty);
+        if (snapshot.empty) {
+          setIsEmpty(true);
+        }
 
         snapshot.forEach((doc: any) => {
           const tracker: types.Tracker = doc.data();
@@ -73,7 +80,6 @@ const Control = (props: PropsFromRedux) => {
 
   let dataPanel = null;
   let trackersEl = null;
-  let data = null;
 
   if (!!todaysDate && props.user) {
     dataPanel = (
@@ -90,30 +96,25 @@ const Control = (props: PropsFromRedux) => {
         raters={raters}
         checkers={checkers}
         counters={counters}
-      />
-    );
-    data = (
-      <GenarateFakeData
-        stopwatches={stopwatches}
-        raters={raters}
-        checkers={checkers}
-        counters={counters}
+        higherIsEmpty={isEmpty}
       />
     );
   }
 
+  let view = trackersEl;
+
+  if (props.selectedView === `data`) view = dataPanel;
+
   return (
     <Aux>
-      <LoginModal show={!props.user} handleClose={() => {}} />
-      {dataPanel}
-      {trackersEl}
-      {data}
+      <div className={classes.Background}>{view}</div>
     </Aux>
   );
 };
 
 const mapStateToProps = (state: State) => ({
   user: state.user,
+  selectedView: state.selectedView,
 });
 
 const connector = connect(mapStateToProps);

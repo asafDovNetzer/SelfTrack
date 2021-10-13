@@ -5,11 +5,26 @@ body {
   font-family: "Raleway", sans-serif;
 }
 
-html,
+/* html, */
 body,
 #root,
 #app,
 #app > div {
   margin: 0;
-  width: 100vw;
+  width: 100%;
+}
+
+@media (max-width: 499px) {
+  /* html, */
+  body,
+  #root,
+  #app,
+  #app > div {
+    margin: 0;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+  }
 }

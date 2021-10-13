@@ -1,0 +1,81 @@
+/* .Login {
+  float: right;
+} */
+
+.GoogleButton {
+  width: 250px;
+  height: 50px;
+  border: 4px solid black;
+  background-color: white;
+  border-radius: 16px;
+}
+
+.AuthButton {
+  border-radius: 16px;
+  padding: 6px 12px;
+  min-width: 140px;
+  font-size: 120%;
+  font-weight: 200;
+  min-height: 45px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  border: 4px solid pink;
+  color: rgb(252, 205, 213);
+  background-color: purple;
+  box-shadow: 1px 16px 10px 1px rgba(128, 0, 128, 0.5);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.AuthButton:hover {
+  transform: translateY(-6px);
+  box-shadow: 1px 26px 10px -1px rgba(128, 0, 128, 0.5);
+}
+
+/* .Login input {
+  display: inline-block;
+  height: 20px;
+  width: 160px;
+  margin: 12px 10px;
+  border-radius: 4px;
+  border: 1.6px solid rgb(0, 66, 110);
+} */
+
+.Modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: -1;
+  /* float: right; */
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: -1;
+}
+
+.Control {
+  margin-right: 10px;
+}
+
+.InputField {
+  width: 250px;
+  margin: 8px;
+}
+
+.Modal mark {
+  background-color: rgb(253, 232, 236);
+  padding: 6px;
+  color: rgb(68, 3, 129);
+}
+
+.Field {
+  /* display: block; */
+  /* padding: 2px; */
+  z-index: 0;
+  margin: 8px;
+  /* width: 300px; */
+}

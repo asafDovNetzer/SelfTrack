@@ -90,13 +90,23 @@ export type Batch = firebase.firestore.WriteBatch;
 export type TimeRef = number;
 
 export type State = {
-  user: boolean;
+  user: User;
+  userName: string;
+  errorMessage: null | string;
+  submitionState: boolean | string;
+  selectedView: string;
 };
 
 export type LoginData = {
   email: string;
   password: string;
 };
+
+// export type SignupData = {
+//   email: string;
+//   password: string;
+//   passwordConfirmation: string;
+// };
 
 export type Datasets = {
   data: number[];

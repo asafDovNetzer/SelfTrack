@@ -1,88 +1,97 @@
-import React, { useState } from "react";
-import { auth } from "../../Firebase";
-import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
+import React from "react";
+// import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import classes from "./MainMenu.module.css";
-// import DbContext from "../../Context/DbContext";
 import Aux from "../../hoc/Auxiliary";
-import { Menu, MenuItem } from "@material-ui/core";
 import * as actions from "../../Store/Actions/ActionsIndex";
 import { connect, ConnectedProps } from "react-redux";
-import LoginModal from "../LoginModal/LoginModal";
 import { State } from "../../Types";
+import { signOut, getAuth } from "firebase/auth";
+import Auxiliary from "../../hoc/Auxiliary";
 
-const MainMenu = (props: PropsFromRedux) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [displayMenu, setDisplayMenu] = useState<boolean>(false);
-  const [modalDisplay, setModalDisplay] = useState<boolean>(false);
+const MainMenu = (props: Props) => {
+  const [didSignout, setDidSignout] = React.useState<boolean>(false);
 
-  // const userDb = useContext(DbContext);
+  React.useEffect(() => {
+    if (!props.user && didSignout) {
+      window.location.href = "/";
+    }
+  }, [didSignout, props.user]);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-    setDisplayMenu(true);
+  const goToLanding = () => {
+    window.location.href = "/";
   };
 
-  const handleSignout = () => {
-    // console.log(`signout 1`);
-    props.noActiveUser();
-    auth
-      .signOut()
-      .then(() => {
-        // console.log(`signout complete 3`);
-        window.location.href = "/";
-        setDisplayMenu(false);
-      })
-      .catch((err) => console.log(err));
+  const signupHandler = () => {
+    props.onSignup();
   };
 
-  const handleLogin = () => {
-    // console.log(`login`);
-    setDisplayMenu(false);
-    setModalDisplay(true);
+  const signoutHandler = () => {
+    props.onSignout();
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      setDidSignout(true);
+    });
+  };
+
+  const handleSelect = (selected: string) => {
+    console.log(selected);
+    props.onSelect(selected);
   };
 
   return (
     <Aux>
-      <button className={classes.MainMenu} onClick={handleClick}>
-        <svg
-          // style={{ color: userDb ? `rgb(0, 185, 56)` : `rgb(48, 48, 48)` }}
-          width="30"
-          height="30"
-          fill="currentColor"
-        >
-          <use href={`${icons}#list`} />
-        </svg>
+      <button onClick={goToLanding} className={classes.Header}>
+        Selfi
       </button>
-      <Menu
-        anchorEl={anchorEl}
-        keepMounted
-        open={displayMenu}
-        onClose={() => setDisplayMenu(false)}
-      >
-        {!props.user ? (
-          <MenuItem onClick={handleLogin}>Login</MenuItem>
-        ) : (
-          <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
-        )}
-      </Menu>
-      <LoginModal
-        handleClose={() => setModalDisplay(false)}
-        show={modalDisplay}
-      />
+      {props.user && window.location.pathname === `/app` && (
+        <Auxiliary>
+          <button
+            onClick={() => handleSelect(`trackers`)}
+            className={`${classes.MenuItem} ${
+              props.selectedView === `trackers` ? classes.Active : ``
+            }`}
+          >
+            Trackers
+          </button>
+          <button
+            onClick={() => handleSelect(`data`)}
+            className={`${classes.MenuItem} ${
+              props.selectedView === `data` ? classes.Active : ``
+            }`}
+          >
+            Data
+          </button>
+        </Auxiliary>
+      )}
+      {props.user ? (
+        <button onClick={signoutHandler} className={classes.MenuItem}>
+          Sign out
+        </button>
+      ) : (
+        <button onClick={signupHandler} className={classes.MenuItem}>
+          Sign up
+        </button>
+      )}
     </Aux>
   );
 };
 
 const mapStateToProps = (state: State) => ({
   user: state.user,
+  selectedView: state.selectedView,
 });
 
 const mapDispatchToProps = {
-  activeUser: () => actions.loginSuccess(),
-  noActiveUser: () => actions.logout(),
+  onSignout: () => actions.logout(),
+  onSelect: (selected: string) => actions.goTo(selected),
 };
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux & {
+  onSignup: () => void;
+};
 
 export default connector(MainMenu);
