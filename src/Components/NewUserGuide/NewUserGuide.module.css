@@ -76,7 +76,7 @@ p {
 .Card {
   padding: 10px;
   border-radius: 20px;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.39);
+  /* box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.39); */
   background-color: white;
   color: grey;
   display: flex;
@@ -132,16 +132,16 @@ p {
   box-shadow: 1px 1px 20px 3px rgb(3, 219, 57);
 }
 .Possible {
-  border: 1.5px solid rgb(255, 145, 0);
+  border: 1.5px solid rgb(46, 196, 255);
 }
 .Possible:hover {
-  box-shadow: 1px 1px 20px 3px rgb(255, 145, 0);
+  box-shadow: 1px 1px 20px 3px rgb(46, 196, 255);
 }
 .NotRec {
-  border: 1.5px solid rgb(143, 143, 143);
+  border: 1.5px solid rgb(190, 190, 190);
 }
 .NotRec:hover {
-  box-shadow: 1px 1px 20px 3px rgb(143, 143, 143);
+  box-shadow: 1px 1px 20px 3px rgb(190, 190, 190);
 }
 .Option h5 {
   font-weight: 400;

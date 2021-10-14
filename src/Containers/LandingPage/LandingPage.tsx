@@ -17,7 +17,7 @@ const LandingPage = () => {
     window.innerWidth > 500 ? (
       <img width="600px" alt="left-img" src="/Images/data4.png" />
     ) : (
-      <img width="300px" alt="left-img" src="/Images/data5.png" />
+      <img width="300px" alt="left-img" src="/Images/data4.png" />
     );
 
   return (

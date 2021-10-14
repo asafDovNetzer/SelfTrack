@@ -1,2 +1,0 @@
-(this["webpackJsonpself-track"]=this["webpackJsonpself-track"]||[]).push([[7],{577:function(e,t,n){"use strict";n.r(t);var s=n(18),c=n(1),i=n(222),r=n(33),u=n(9),a=Object(r.b)((function(e){return{user:e.user}}));t.default=a((function(e){var t=Object(c.useState)(500),n=Object(s.a)(t,2),r=n[0],a=n[1];return Object(c.useEffect)((function(){"/signup"===window.location.pathname&&a(0),e.user&&(window.location.href="/")}),[e.user]),Object(u.jsx)("div",{style:{padding:"60px",zIndex:-3},children:Object(u.jsx)(i.a,{slide:r})})}))}}]);
-//# sourceMappingURL=7.c9b8102b.chunk.js.map

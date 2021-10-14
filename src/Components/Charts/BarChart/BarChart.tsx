@@ -31,7 +31,7 @@ const BarChart: React.FC<{
               ticks: {
                 stepSize: 4,
                 callback: (value: string) => {
-                  console.log(value);
+                  // console.log(value);
                   return `${value}:00`;
                 },
               },

@@ -11,11 +11,13 @@ import {
 } from "@material-ui/core";
 import Divider from "../UI/Divider";
 import FakeTracker from "../TrackersForm/FakeTracker/FakeTracker";
-import TrackersForm from "../TrackersForm/TrackersForm";
+// import TrackersForm from "../TrackersForm/TrackersForm";
 
 const trackersArray = [`stopwatch`, `counter`, `checker`, `rater`];
 
 const NewUserGuide = (props: Props) => {
+  // console.log(`hi`);
+
   const [step, setStep] = React.useState<number>(1);
 
   const [line, setLine] = React.useState<string | null>(null);
@@ -36,17 +38,7 @@ const NewUserGuide = (props: Props) => {
     setAnswer2((event.target as HTMLInputElement).value);
   };
 
-  // const restartModal = () => {
-  //   setStep(1);
-  //   setLine(null);
-  //   setAnswer1(null);
-  //   setAnswer2(null);
-  // };
-
   React.useEffect(() => {
-    if (props.submitionState === true) {
-      props.onClose();
-    }
     const map: Map<string, string> = new Map();
     map.set(`stopwatch`, `Recommended`);
     map.set(`counter`, `Possible`);
@@ -77,55 +69,63 @@ const NewUserGuide = (props: Props) => {
       return;
     }
 
-    if (line === `subj`) {
+    if (step === 3) {
+      if (answer2 === `yes`) {
+        map.set(`stopwatch`, ``);
+        map.set(`counter`, `Recommended`);
+        map.set(`rater`, ``);
+        map.set(`checker`, `Possible`);
+
+        setSelected(`counter`);
+      } else {
+        map.set(`stopwatch`, `Possible`);
+        map.set(`counter`, `Possible`);
+        map.set(`rater`, ``);
+        map.set(`checker`, `Recommended`);
+
+        setSelected(`checker`);
+      }
       setStep(4);
-      map.set(`stopwatch`, ``);
-      map.set(`counter`, ``);
-      map.set(`rater`, `Recommended`);
-      map.set(`checker`, ``);
-
-      // setTrackers(map);
-      setSelected(`rater`);
-    } else {
-      if (answer1 && answer2) {
-        if (answer2 === `yes`) {
-          map.set(`stopwatch`, ``);
-          map.set(`counter`, `Recommended`);
-          map.set(`rater`, ``);
-          map.set(`checker`, `Possible`);
-
-          setSelected(`counter`);
-        } else {
-          map.set(`stopwatch`, `Possible`);
-          map.set(`counter`, `Possible`);
-          map.set(`rater`, ``);
-          map.set(`checker`, `Recommended`);
-
-          setSelected(`checker`);
-        }
-        setStep(step + 1);
-      }
-      if (answer1 && !answer2) {
-        if (answer1 === `yes`) {
-          map.set(`stopwatch`, `Recommended`);
-          map.set(`counter`, ``);
-          map.set(`rater`, ``);
-          map.set(`checker`, `Possible`);
-
-          setStep(4);
-          setSelected(`stopwatch`);
-        } else {
-          setStep(3);
-        }
-      }
-      if (step === 1) setStep(2);
     }
+
+    if (step === 2) {
+      if (answer1 === `yes`) {
+        map.set(`stopwatch`, `Recommended`);
+        map.set(`counter`, ``);
+        map.set(`rater`, ``);
+        map.set(`checker`, `Possible`);
+
+        setSelected(`stopwatch`);
+        setStep(4);
+      } else {
+        setStep(3);
+      }
+    }
+
+    if (step === 1) {
+      if (line === `subj`) {
+        map.set(`stopwatch`, ``);
+        map.set(`counter`, ``);
+        map.set(`rater`, `Recommended`);
+        map.set(`checker`, ``);
+
+        setSelected(`rater`);
+        setStep(4);
+      } else {
+        setStep(2);
+      }
+    }
+
     setTrackers(map);
   };
 
   const backHandler = () => {
-    if (line === `subj` && step === 4) {
-      setStep(1);
+    if (step === 4) {
+      if (line === `subj`) {
+        setStep(1);
+      } else {
+        setStep(answer1 === `yes` ? 2 : 3);
+      }
     } else {
       setStep(step - 1);
     }
@@ -284,12 +284,12 @@ const NewUserGuide = (props: Props) => {
                   className = classes.Recommended;
                   break;
                 case `Possible`:
-                  color = `rgb(255, 145, 0)`;
+                  color = `rgb(46, 196, 255)`;
                   order = 2;
                   className = classes.Possible;
                   break;
                 default:
-                  color = `rgb(143, 143, 143)`;
+                  color = `rgb(190, 190, 190)`;
                   order = 4;
                   className = classes.NotRec;
                   break;
@@ -357,7 +357,6 @@ const NewUserGuide = (props: Props) => {
 const mapStateToProps = (state: State) => ({
   user: state.user,
   userName: state.userName,
-  submitionState: state.submitionState,
 });
 
 const mapDispatchToProps = {

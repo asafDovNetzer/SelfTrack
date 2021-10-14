@@ -10,7 +10,7 @@ const AuthPage = (props: PropsFromRedux) => {
     const url = window.location.pathname;
 
     if (url === `/signup`) setSlide(0);
-    if (props.user) window.location.href = "/";
+    // if (props.user) window.location.href = "/";
   }, [props.user]);
 
   return (

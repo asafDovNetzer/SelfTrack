@@ -8,14 +8,13 @@ const testimonies = [
     name: `Galila`,
     location: `Metula, Israel`,
     img: `Images/galila.jpg`,
-    testimony: `Stableyez has put my life in order, it helps me remember what i do and how i feel afterwards.`,
+    testimony: `I have a lot of jobs and hobbies, and it was hard for me to keep track of what's responsable for what... Stableyes really puts my life in order.`,
   },
   {
-    name: `Eldad`,
-    location: `Brussls, Belgium`,
+    name: `Jonas`,
+    location: `Brussels, Belgium`,
     img: `Images/eldad2.jpg`,
-    testimony: `After using Stableyez for just one month, I
-        discovered what has been effecting my sleep quality. I was so confused before and must have tried everything!`,
+    testimony: `After using the app for about a month, i realized the underlying issue of my poor sleep quality. Without the charts in front of me, I just couldn't see it.`,
   },
   {
     name: `Dor`,

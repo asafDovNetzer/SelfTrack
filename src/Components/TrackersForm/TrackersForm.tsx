@@ -20,23 +20,13 @@ import { TextField } from "@material-ui/core";
 import Spinner from "../Spinner/Spinner";
 
 const TrackersForm = React.memo((props: Props) => {
-  // const [page, setPage] = useState<number>(1);
-  // const [pages, setPages] = useState<number>(1);
   const [color, setColor] = useState<string>(`#000000`);
-  // const [errors, setErrors] = useState<any>({});
-  // const [name, setName] = useState<string>(`Give me a cool name`);
-  // const [description, setDescription] = useState<string>(``);
-  // const [size, setSize] = useState<string>(`1`);
 
   const userDb = useContext(DbContext);
 
   useEffect(() => {
     if (props.selected) {
-      // setName(props.selected.name);
       setColor(props.selected.color);
-      console.log(props.selected);
-      // setDescription(props.selected.description);
-      // setSize(props.selected.size ? props.selected.size.toString() : `1`);
     }
   }, [props.selected]);
 
@@ -86,42 +76,14 @@ const TrackersForm = React.memo((props: Props) => {
     },
   });
 
-  // useEffect(() => {
-  //   if (type !== `counter`) {
-  //     setPages(1);
-  //     // setSize(`1`);
-  //   } else {
-  //     setPages(2);
-  //   }
-  // }, [type]);
-
-  // const changePage = (event: any, page: number) => {
-  //   setPage(page);
-  // };
-
   const closeForm = () => {
     setColor(`#000000`);
     props.onFinish();
-    // setName(`Give me a cool name`);
-    // setSize(`1`);
-    // setDescription(``);
-    // setErrors({});
-    // setPage(1);
-    // closeHandler();
   };
 
   const handleChangeComplete = (color: any) => {
     setColor(color.hex);
   };
-
-  // const changeSize = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSize(event.target.value);
-  // };
-
-  // const initialValues: any = {
-  //   name: selected ? selected.name : ``,
-  //   description: selected ? selected.description : ``,
-  // };
 
   const formElement: JSX.Element = (
     <form className={classes.Form} onSubmit={formik.handleSubmit}>
@@ -180,7 +142,6 @@ const TrackersForm = React.memo((props: Props) => {
         style={{ display: props.type === `counter` ? `unset` : `none` }}
         className={classes.Field}
       >
-        {/* <label>Choose a step size:</label> */}
         <TextField
           value={formik.values.size}
           onChange={formik.handleChange}
@@ -191,7 +152,7 @@ const TrackersForm = React.memo((props: Props) => {
             <p>
               Step size<small> (optional)</small>
             </p>
-          } // defaultValue={size}
+          }
           variant="outlined"
           style={{ width: `100px` }}
           error={formik.touched.size && Boolean(formik.errors.size)}
@@ -204,19 +165,6 @@ const TrackersForm = React.memo((props: Props) => {
         </label>
         <CirclePicker onChangeComplete={handleChangeComplete} color={color} />
       </div>
-      {/* <p style={{ color: `red` }}>{errors.name}</p> */}
-      {/* <div className={classes.Field}>
-              <label>Is it a part of a Survey?</label>
-              <Select value="" onChange={() => {}}>
-                <MenuItem value="group1">survey 1</MenuItem>
-                <MenuItem
-                  value="
-                survey2"
-                >
-                  survey 2
-                </MenuItem>
-              </Select>
-            </div> */}
       <div className={classes.Field}>
         <button
           disabled={color === `#000000`}

@@ -31,7 +31,7 @@ const BarChartPreamp: React.FC<{
       ...entries.map((entry) => entry.timestamp),
     ];
 
-    console.log(stopwatchEntries);
+    // console.log(stopwatchEntries);
     const currentTimestamp: number = nowTimestamp;
 
     stopwatchEntries.push(
@@ -67,7 +67,7 @@ const BarChartPreamp: React.FC<{
       });
     });
 
-    console.log(datasetsArray);
+    // console.log(datasetsArray);
 
     setDatasets(datasetsArray);
   }, [stopwatch, entries, date, nowTimestamp]);

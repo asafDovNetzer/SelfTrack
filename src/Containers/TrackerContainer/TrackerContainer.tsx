@@ -44,6 +44,7 @@ const Trackers: React.FC<{
     useEffect(() => {
       if (higherIsEmpty) {
         setIsEmpty(true);
+        console.log(`is empty`);
       }
     }, [higherIsEmpty]);
 
@@ -61,10 +62,12 @@ const Trackers: React.FC<{
       const type: string = event.target!.outerText.toLowerCase();
 
       if (type === `not sure?`) {
+        console.log(`not sure`);
         setIsEmpty(true);
         setDisplayMenu(false);
         return;
       }
+      console.log(`sure`);
       setDisplayMenu(false);
       setType(type);
       setSelected(null);

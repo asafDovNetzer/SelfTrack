@@ -81,20 +81,22 @@ export const loginGoogle = () => {
 
     if (window.innerWidth <= 500) {
       signInWithRedirect(firebase.auth, firebase.googleProvider);
-
-      getRedirectResult(firebase.auth)
-        .then((result: any) => {
-          const user: User = result.user;
-
-          console.log(`redirected google`, user);
-          if (user) {
-            window.location.href = "/app";
-          }
-        })
-        .catch((error) => {});
     }
   };
 };
+
+getRedirectResult(firebase.auth)
+  .then((result: any) => {
+    const user: User = result.user;
+
+    console.log(`redirected google`, user);
+    if (user) {
+      window.location.href = "/app";
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 export const loginFacebook = () => {
   return (dispatch: AppDispatch) => {
