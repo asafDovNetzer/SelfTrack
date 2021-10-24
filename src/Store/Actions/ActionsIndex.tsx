@@ -2,15 +2,20 @@ export {
   loginAsync,
   loginSuccess,
   logout,
-  signupAsync,
+  // signupAsync,
+  sendVerificationEmail,
   loginGoogle,
   loginFacebook,
-  setUserName,
-  checkEmailVerification,
+  setUserName, // checkEmailVerification,
 } from "./AuthActions";
 
 export { setError, goTo } from "./UxActions";
 
 export { setSubmitionState } from "./FormActions";
 
-export { createNewTracker } from "./Creator";
+export {
+  createNewTracker,
+  updateField,
+  deleteTracker,
+  deleteEntries,
+} from "./Creator";

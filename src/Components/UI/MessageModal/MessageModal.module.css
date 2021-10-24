@@ -1,0 +1,64 @@
+.Modal {
+  width: 300px;
+  height: max-content;
+  margin: 200px auto;
+  background-color: white;
+  min-height: 100px;
+  max-height: 200px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.411);
+  display: flex;
+  flex-flow: column;
+  z-index: 9999999999999999999;
+}
+
+.Message {
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.Message h2 {
+  font-size: 120%;
+  font-weight: 400;
+}
+
+.ButtonPanel {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-flow: row;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+
+.ButtonPanel button {
+  border: none;
+  border-radius: 18px;
+  width: 100px;
+  height: 40px;
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.Yes {
+  background-color: rgb(21, 196, 21);
+  box-shadow: 1px 7px 8px 1px rgba(11, 190, 20, 0.411);
+}
+.No {
+  background-color: rgb(243, 2, 2);
+  box-shadow: 1px 7px 8px 1px rgba(243, 2, 2, 0.411);
+}
+
+.Backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999999999;
+}

@@ -2,7 +2,6 @@ import { LoginData, User } from "../../Types";
 import * as firebase from "../../Firebase";
 import * as actionTypes from "./ActionTypes";
 import type { AppDispatch } from "../../index";
-
 import {
   getAuth,
   signInWithPopup,
@@ -11,14 +10,13 @@ import {
   getRedirectResult,
 } from "firebase/auth";
 import { setError } from "./ActionsIndex";
+import { auth } from "../../Firebase";
 
 export const loginAsync = (data: LoginData) => {
   return (dispatch: AppDispatch) => {
     firebase.auth
       .signInWithEmailAndPassword(data.email, data.password)
       .then((userCredential) => {
-        // const user: User = userCredential.user;
-
         window.location.href = `/app`;
       })
       .catch((error) => {
@@ -34,15 +32,8 @@ export const loginAsync = (data: LoginData) => {
         } else {
           errorMessage = `The email address you entered isn't registered`;
         }
-        dispatch(setError(errorMessage));
+        dispatch(setError(errorMessage, () => {}));
       });
-  };
-};
-
-export const checkEmailVerification = () => {
-  return (dispatch: AppDispatch) => {
-    const auth = getAuth();
-    console.log(auth.currentUser);
   };
 };
 
@@ -70,12 +61,15 @@ export const loginGoogle = () => {
           window.location.href = "/app";
         })
         .catch((error) => {
-          console.log(error);
-          dispatch(
-            setError(
-              `Network error, make sure you're connected to the internet`
-            )
-          );
+          console.log(error.code);
+          if (error.code !== `auth/popup-closed-by-user`) {
+            dispatch(
+              setError(
+                `Network error, make sure you're connected to the internet`,
+                () => {}
+              )
+            );
+          }
         });
     }
 
@@ -95,7 +89,7 @@ getRedirectResult(firebase.auth)
     }
   })
   .catch((error) => {
-    console.log(error);
+    // console.log(error);
   });
 
 export const loginFacebook = () => {
@@ -118,21 +112,16 @@ export const loginFacebook = () => {
   };
 };
 
-export const signupAsync = (data: LoginData) => {
+export const sendVerificationEmail = (notify: boolean) => {
   return (dispatch: AppDispatch) => {
-    firebase.auth
-      .createUserWithEmailAndPassword(data.email, data.password)
-      .then((userCredential) => {
-        const user: User = userCredential.user;
-
-        console.log(user, `signup`);
-        // const user = userCredential.user;
-        // window.location.href = `/app`;
-        // dispatch(loginSuccess(user));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const actionCodeSettings = {
+      url: "https://www.stableyez.com/?email=" + auth.currentUser!.email,
+      handleCodeInApp: true,
+    };
+    auth.currentUser!.sendEmailVerification(actionCodeSettings).then(() => {
+      console.log(`sent`);
+      if (notify) dispatch(setError(`Email sent`, () => {}));
+    });
   };
 };
 

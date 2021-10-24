@@ -1,0 +1,70 @@
+.Form input {
+  border: 1.5px solid rgb(0, 153, 255);
+  padding: 4px 10px;
+  padding-right: 50px;
+  outline: none;
+  background-color: transparent;
+  min-width: 110px;
+  max-width: 280px;
+  height: 45px;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+
+.Form textarea {
+  border: 1.5px solid rgb(0, 153, 255);
+  padding: 4px 10px;
+  padding-bottom: 30px;
+  outline: none;
+  background-color: transparent;
+  min-width: 110px;
+  max-width: 280px;
+  height: 100px;
+  resize: none;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  position: relative;
+}
+
+.Form {
+  /* height: 45px; */
+  position: relative;
+  width: max-content;
+}
+
+.Save {
+  position: absolute;
+  /* top: 10px; */
+  right: 4px;
+  border: none;
+  background-color: white;
+  color: rgb(0, 153, 255);
+  z-index: 2;
+}
+.Save:disabled {
+  color: grey;
+}
+.Message {
+  position: absolute;
+  bottom: -25px;
+  background-color: rgba(255, 255, 255, 0.707);
+  left: 0px;
+  width: max-content;
+  /* height: 25px; */
+}
+.Message p {
+  margin-bottom: 0px;
+}
+
+@media (max-width: 499px) {
+  .Form {
+    max-width: 100%;
+  }
+
+  .Form input {
+    width: 200px;
+  }
+}

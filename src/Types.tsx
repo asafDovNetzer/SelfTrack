@@ -95,6 +95,7 @@ export type State = {
   errorMessage: null | string;
   submitionState: boolean | string;
   selectedView: string;
+  errorModalFunc: () => void;
 };
 
 export type LoginData = {

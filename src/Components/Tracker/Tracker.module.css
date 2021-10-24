@@ -1,17 +1,38 @@
 .Tracker {
-  max-width: 320px;
-  min-width: 270px;
+  /* max-width: 320px; */
+  /* min-width: 270px; */
+  width: 300px;
   height: 72px;
   background-color: rgb(255, 255, 255);
   border-radius: 30px;
-  /* border: 2.5px solid rgb(128, 128, 128); */
   border: 4px solid black;
-  /* border-left: 4px solid; */
   outline: none;
-  float: left;
   margin: 5px 5px;
-  /* box-sizing: border-box; */
   transition: box-shadow 0.2s;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+}
+
+.Expand {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Expand svg {
+  transform: rotateZ(45deg);
+  transition: transform 0.1s;
+}
+
+.Expand svg:hover {
+  transform: rotateZ(45deg) scale(1.15);
+}
+
+.Header {
+  color: rgb(53, 53, 53);
+  font-size: 120%;
+  font-weight: 400;
+  margin-bottom: 0px;
 }
 
 @media (max-width: 499px) {

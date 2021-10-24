@@ -12,8 +12,10 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 
 const Checker = (props: Props) => {
+  // const [expanded, setExpanded] = useState<boolean>(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const userDb = useContext(DbContext);
   const [entry, setEntry] = useState<types.CheckerEntry | null>(null);
@@ -87,20 +89,20 @@ const Checker = (props: Props) => {
   };
 
   const select = (event: any) => {
-    if (!!event.target.closest(`.main-button`)) return;
+    // if (!!event.target.closest(`.main-button`)) return;
 
     props.selector(props.checker.id);
   };
 
   return (
     <div
-      onClick={select}
+      // onClick={select}
       className={trackerClasses.Tracker}
       style={{
         borderColor: props.checker.color,
-        boxShadow: props.isSelected
-          ? `1px 1px 10px 1px ${props.checker.color}`
-          : `none`,
+        // boxShadow: props.isSelected
+        //   ? `1px 1px 10px 1px ${props.checker.color}`
+        //   : `none`,
       }}
     >
       <div className={classes.Content}>
@@ -109,10 +111,15 @@ const Checker = (props: Props) => {
           <Checkbox
             checked={isChecked}
             onChange={checkerHandler}
-            className="main-button"
+            // className="main-button"
             color="primary"
           />
         </div>
+      </div>
+      <div className={trackerClasses.Expand}>
+        <svg onClick={select} width="30" height="30" fill="currentColor">
+          <use href={`${icons}#chevron-expand`} />
+        </svg>
       </div>
     </div>
   );
@@ -129,7 +136,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   checker: types.CheckerType;
   date: Date;
-  isSelected: boolean;
+  // isSelected: boolean;
   selector: (id: string) => void;
 };
 

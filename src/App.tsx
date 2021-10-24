@@ -1,14 +1,8 @@
 import React, { Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "./Components/Layouts/Layout";
-// import Control from "./Control";
 import { connect, ConnectedProps } from "react-redux";
 import { State } from "./Types";
-// import {
-//   ThemeProvider,
-//   createMuiTheme,
-//   makeStyles,
-// } from "@material-ui/core/styles";
 import { Route, Switch } from "react-router-dom";
 import Spinner from "./Components/Spinner/Spinner";
 
@@ -20,16 +14,11 @@ const ValidatePage = React.lazy(
   () => import("./Components/Account/ValidatePage")
 );
 const AuthPage = React.lazy(() => import("./Containers/AuthPage/AuthPage"));
-
-// const theme = createMuiTheme();
-
-// const useStyles = makeStyles((theme) => {
-//   root: {
-//   }
-// });
+const CompleteSignupPage = React.lazy(
+  () => import("./Components/Account/CompleteSignup")
+);
 
 const App = (props: PropsFromRedux) => {
-  // const classes = useStyles();
   React.useEffect(() => {
     if (
       props.user &&
@@ -41,10 +30,7 @@ const App = (props: PropsFromRedux) => {
   }, [props]);
 
   return (
-    <div
-      className="App"
-      //  style={{ height: `100vh` }}
-    >
+    <div className="App">
       <Layout>
         <Suspense fallback={<Spinner />}>
           <Switch>
@@ -52,6 +38,11 @@ const App = (props: PropsFromRedux) => {
             <Route path="/signup" component={AuthPage} />
             <Route path="/login" component={AuthPage} />
             <Route path="/validate" component={ValidatePage} exact />
+            <Route
+              path="/complete-signup"
+              component={CompleteSignupPage}
+              exact
+            />
             <Route path="/" component={LandingPage} exact />
           </Switch>
         </Suspense>

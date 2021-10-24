@@ -6,7 +6,7 @@ import TrackerSelector from "../../Components/TrackerSelector/TrackerSelector";
 import RangeSelector from "../../Components/TimeRange/RangeSelector";
 import ChartSelect from "../../Components/Charts/ChartSelect";
 import DateContext from "../../Context/DateContext";
-import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
+// import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 
 const DataPanel: React.FC<{
   stopwatches: types.StopwatchType[];

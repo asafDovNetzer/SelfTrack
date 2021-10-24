@@ -66,10 +66,7 @@ const Toolbar = (props: PropsFromRedux) => {
 
   return (
     <div className={`${classes.Header} header`}>
-      <div
-        className={`${classes.Toolbar} toolbar`}
-        // style={{ position: sticky ? `fixed` : `unset` }}
-      >
+      <div className={`${classes.Toolbar} toolbar`}>
         <div
           className={classes.MenuButton}
           onClick={() => setDisplayMenu(true)}
@@ -79,7 +76,10 @@ const Toolbar = (props: PropsFromRedux) => {
           </svg>
         </div>
         <div className={classes.Menu}>
-          <MainMenu onSignup={handleSignupButton} />
+          <MainMenu
+            onCloseSidedrawer={() => {}}
+            onSignup={handleSignupButton}
+          />
         </div>
         <div>
           {props.user?.emailVerified && window.location.pathname !== `/app` ? (
@@ -100,7 +100,10 @@ const Toolbar = (props: PropsFromRedux) => {
           <AuthModal slide={slide} />
         </Modal>
         <SideDrawer show={displayMenu} onHide={() => setDisplayMenu(false)}>
-          <MainMenu onSignup={handleSignupButton} />
+          <MainMenu
+            onCloseSidedrawer={() => setDisplayMenu(false)}
+            onSignup={handleSignupButton}
+          />
         </SideDrawer>
       </div>
     </div>

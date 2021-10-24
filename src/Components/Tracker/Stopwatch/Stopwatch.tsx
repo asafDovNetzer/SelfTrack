@@ -17,7 +17,7 @@ import {
 import { connect, ConnectedProps } from "react-redux";
 
 const Stopwatch = (props: Props) => {
-  const [expanded, setExpanded] = useState<boolean>(false);
+  // const [expanded, setExpanded] = useState<boolean>(false);
   const [accum, setAccum] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
   const [lastEntry, setLastEntry] = useState<number>(Date.now());
@@ -32,7 +32,7 @@ const Stopwatch = (props: Props) => {
     setIsRunning(false);
     setAccum(0);
 
-    console.log(userDb, props.user);
+    // console.log(userDb, props.user);
 
     const entriesRef = collection(userDb!, "entries");
 
@@ -136,24 +136,24 @@ const Stopwatch = (props: Props) => {
   };
 
   const select = (event: any) => {
-    if (!!event.target.closest(`.main-button`)) return;
+    // if (!!event.target.closest(`.main-button`)) return;
     props.selector(props.stopwatch.id);
   };
 
   return (
     <div
-      onClick={select}
+      // onClick={select}
       className={trackerClasses.Tracker}
       style={{
         borderColor: props.stopwatch.color,
-        boxShadow: props.isSelected
-          ? `1px 1px 10px 1px ${props.stopwatch.color}`
-          : `none`,
+        // boxShadow: props.isSelected
+        //   ? `1px 1px 10px 1px ${props.stopwatch.color}`
+        //   : `none`,
       }}
     >
       <div className={classes.Content}>
         <button
-          className={`${classes.MainButton}     main-button`}
+          className={classes.MainButton}
           onClick={mainButtonHandler}
           disabled={props.date.getTime() !== todaysDate!.getTime()}
         >
@@ -163,21 +163,18 @@ const Stopwatch = (props: Props) => {
         </button>
         <h5 className={classes.Header}>{props.stopwatch.name}</h5>
         <Clock isRunning={isRunning} accum={accum} lastEntry={lastEntry} />
-        <button
-          onClick={() => setExpanded(!expanded)}
-          className={`${classes.ExpandButton}     nothing`}
-        >
-          <svg width="24" height="24" fill="currentColor">
-            <use href={`${icons}#list-ul`} />
-          </svg>
-        </button>
+      </div>
+      <div className={trackerClasses.Expand}>
+        <svg onClick={select} width="30" height="30" fill="currentColor">
+          <use href={`${icons}#chevron-expand`} />
+        </svg>
       </div>
       <StopwatchEntries
-        show={expanded}
+        show={false}
         entries={entries}
         stopwatch={props.stopwatch}
         date={props.date}
-        closeHandler={() => setExpanded(false)}
+        closeHandler={() => {}}
       />
     </div>
   );
@@ -194,7 +191,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   stopwatch: types.StopwatchType;
   date: Date;
-  isSelected: boolean;
+  // isSelected: boolean;
   selector: (id: string) => void;
 };
 

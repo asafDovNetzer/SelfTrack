@@ -1,11 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import * as types from "../../../Types";
-import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import trackerClasses from "../Tracker.module.css";
-
 import classes from "./Counter.module.css";
 import DbContext from "../../../Context/DbContext";
-import { Button, ButtonGroup } from "@material-ui/core";
 import { connect, ConnectedProps } from "react-redux";
 import {
   collection,
@@ -14,7 +11,8 @@ import {
   query,
   where,
 } from "firebase/firestore";
-// import Aux from "../../../hoc/Auxiliary";
+import CounterIcon from "../../Icons/CounterIcon";
+import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 
 const Counter = (props: Props) => {
   const [count, setCount] = useState<number>(0);
@@ -57,18 +55,7 @@ const Counter = (props: Props) => {
     return unsubscribe;
   }, [userDb, props.date, props.counter.id, props.user]);
 
-  const changeCount = (event: any) => {
-    const isPlus = !!event.target.closest(`.plus`);
-
-    let newCount: number;
-
-    if (isPlus) {
-      newCount = count + props.counter.size;
-    } else {
-      newCount =
-        count - props.counter.size < 0 ? 0 : count - props.counter.size;
-    }
-
+  const changeCount = (newCount: number) => {
     const timestamp = Date.now();
 
     if (!entry) {
@@ -98,42 +85,34 @@ const Counter = (props: Props) => {
   };
 
   const select = (event: any) => {
-    if (!!event.target.closest(`.main-button`)) return;
+    // if (!!event.target.closest(`.main-button`)) return;
     props.selector(props.counter.id);
   };
 
   return (
     <div
-      onClick={select}
+      // onClick={select}
       className={trackerClasses.Tracker}
       style={{
         borderColor: props.counter.color,
-        boxShadow: props.isSelected
-          ? `1px 1px 10px 1px ${props.counter.color}`
-          : `none`,
+        // boxShadow: props.isSelected
+        //   ? `1px 1px 10px 1px ${props.counter.color}`
+        //   : `none`,
       }}
     >
       <div className={classes.Content}>
         <h5 className={classes.Header}>{props.counter.name}</h5>
-        <ButtonGroup className={classes.Buttons} color="primary">
-          <Button className="main-button   plus" onClick={changeCount}>
-            <svg width="20" height="20" fill="currentColor">
-              <use href={`${icons}#plus`} />
-            </svg>
-          </Button>
-          <Button className="main-button" color="primary">
-            {count}
-          </Button>
-          <Button
-            className="main-button   minus"
-            onClick={changeCount}
-            disabled={count === 0}
-          >
-            <svg width="20" height="20" fill="currentColor">
-              <use href={`${icons}#dash`} />
-            </svg>
-          </Button>
-        </ButtonGroup>
+        <CounterIcon
+          count={count}
+          size={props.counter.size}
+          plus={changeCount}
+          minus={changeCount}
+        />
+      </div>
+      <div className={trackerClasses.Expand}>
+        <svg onClick={select} width="30" height="30" fill="currentColor">
+          <use href={`${icons}#chevron-expand`} />
+        </svg>
       </div>
     </div>
   );
@@ -150,7 +129,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   counter: types.CounterType;
   date: Date;
-  isSelected: boolean;
+  // isSelected: boolean;
   selector: (id: string) => void;
 };
 

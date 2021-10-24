@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./NewUserGuide.module.css";
+import classes from "./NewTrackerGuide.module.css";
 import * as actions from "../../Store/Actions/ActionsIndex";
 import { connect, ConnectedProps } from "react-redux";
 import { State } from "../../Types";
@@ -11,16 +11,14 @@ import {
 } from "@material-ui/core";
 import Divider from "../UI/Divider";
 import FakeTracker from "../TrackersForm/FakeTracker/FakeTracker";
-// import TrackersForm from "../TrackersForm/TrackersForm";
+import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 
 const trackersArray = [`stopwatch`, `counter`, `checker`, `rater`];
 
 const NewUserGuide = (props: Props) => {
-  // console.log(`hi`);
-
   const [step, setStep] = React.useState<number>(1);
 
-  const [line, setLine] = React.useState<string | null>(null);
+  const [line, setLine] = React.useState<string | null>(`obj`);
 
   const [answer1, setAnswer1] = React.useState<null | string>(null);
   const [answer2, setAnswer2] = React.useState<null | string>(null);
@@ -46,6 +44,14 @@ const NewUserGuide = (props: Props) => {
     map.set(`checker`, ``);
 
     setTrackers(map);
+
+    return () => {
+      setStep(1);
+      setLine(`obj`);
+      setAnswer1(null);
+      setAnswer2(null);
+      setSelected(null);
+    };
   }, [props]);
 
   const handleToggle = (event: any) => {
@@ -55,10 +61,6 @@ const NewUserGuide = (props: Props) => {
     if (event.target.closest(".subj")) {
       setLine(`subj`);
     }
-  };
-
-  const handleSkip = () => {
-    props.onClose();
   };
 
   const nextHandler = () => {
@@ -159,10 +161,10 @@ const NewUserGuide = (props: Props) => {
 
   switch (line) {
     case "obj":
-      explanetion = `Something that also an outsider looking at me could have measured`;
+      explanetion = `i.e. Something that also an outsider looking at me could have measured`;
       break;
     case "subj":
-      explanetion = `Somebody looking from the outside couldn't tell, only i can know`;
+      explanetion = `i.e. Somebody looking from the outside couldn't tell, only i can know`;
       break;
     default:
       explanetion = `Please select one`;
@@ -181,7 +183,7 @@ const NewUserGuide = (props: Props) => {
                 style={{
                   borderRadius: `10px 0px 0px 10px`,
                   backgroundColor:
-                    line === `obj` ? `rgb(75, 198, 255)` : `white`,
+                    line === `obj` ? `rgb(81, 229, 255)` : `white`,
                 }}
                 className="obj"
               >
@@ -192,15 +194,26 @@ const NewUserGuide = (props: Props) => {
                 style={{
                   borderRadius: `0px 10px 10px 0px`,
                   backgroundColor:
-                    line === `subj` ? `rgb(75, 198, 255)` : `white`,
+                    line === `subj` ? `rgb(81, 229, 255)` : `white`,
                 }}
                 className="subj"
               >
                 subjective
               </button>
+              <svg
+                className={classes.Arrow}
+                style={{
+                  right: line === `subj` ? `50px` : `150px`,
+                }}
+                width="20"
+                height="20"
+                fill="currentColor"
+              >
+                <use href={`${icons}#caret-up-fill`} />
+              </svg>
             </div>
           </div>
-          <p>{explanetion}</p>
+          <p style={{ marginTop: `10px` }}>{explanetion}</p>
         </div>
       );
       break;
@@ -275,6 +288,7 @@ const NewUserGuide = (props: Props) => {
             {trackersArray.map((type, index) => {
               let color: string;
               let order: number;
+              let trackerColor: string;
               let className;
 
               switch (trackers.get(type)) {
@@ -294,6 +308,21 @@ const NewUserGuide = (props: Props) => {
                   className = classes.NotRec;
                   break;
               }
+
+              switch (type) {
+                case `stopwatch`:
+                  trackerColor = `rgb(152, 29, 135)`;
+                  break;
+                case `rater`:
+                  trackerColor = `rgb(12, 223, 238)`;
+                  break;
+                case `checker`:
+                  trackerColor = `rgb(12, 136, 238)`;
+                  break;
+                default:
+                  trackerColor = `rgb(236, 54, 141)`;
+              }
+
               return (
                 <div
                   key={index}
@@ -308,7 +337,7 @@ const NewUserGuide = (props: Props) => {
                   <h5 style={{ color: color }}>{trackers.get(type)}</h5>
                   <FakeTracker
                     type={type}
-                    color={color}
+                    color={trackerColor}
                     name={type.slice(0, 1).toUpperCase() + type.slice(1)}
                     size={0}
                   />
@@ -323,25 +352,20 @@ const NewUserGuide = (props: Props) => {
   return (
     <div className={classes.NewUser}>
       <div className={classes.Header}>
-        <h1>Let's get you started!</h1>
+        <h1>New Tracker Guide</h1>
         <p>In just a minute, we'll choose the right Tracker type for you</p>
       </div>
       <Divider />
       <div className={classes.Body}>{body}</div>
       <Divider />
       <div className={classes.ButtonPanel}>
-        <div className={classes.LeftButtons}>
-          <button
-            onClick={backHandler}
-            disabled={step === 1}
-            className={classes.Back}
-          >
-            Back
-          </button>
-          <button onClick={handleSkip} className={classes.Skip}>
-            Close
-          </button>
-        </div>
+        <button
+          onClick={backHandler}
+          disabled={step === 1}
+          className={classes.Back}
+        >
+          Back
+        </button>
         <button
           disabled={checkNext()}
           onClick={nextHandler}

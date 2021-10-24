@@ -1,11 +1,12 @@
 // import { LoginData, User } from "../../Types";
 import * as actionTypes from "./ActionTypes";
 
-export const setError = (error: string | null) => {
+export const setError = (error: string | null, continueFunc: () => void) => {
   console.log(error);
   return {
     type: actionTypes.SET_ERROR,
     error: error,
+    continueFunc: continueFunc,
   };
 };
 

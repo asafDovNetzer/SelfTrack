@@ -4,15 +4,11 @@ import { User } from "../../../Types";
 import * as firebase from "../../../Firebase";
 import UIclasses from "../../UI/General.module.css";
 import classes from "../ModalContent.module.css";
-import { LoginData } from "../../../Types";
 import * as actions from "../../../Store/Actions/ActionsIndex";
-// import { Formik, Form, Field } from "formik";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import TextField from "@material-ui/core/TextField";
-import { sendEmailVerification, updateProfile } from "firebase/auth";
-
-// const validationSchema =
+import { updateProfile } from "firebase/auth";
 
 const SignUp = (props: Props) => {
   const formik = useFormik({
@@ -41,21 +37,19 @@ const SignUp = (props: Props) => {
         .required("Confirmation password is required"),
     }),
     onSubmit: (values) => {
-      //   console.log(values);
       const userName: string =
         values.name.slice(0, 1).toUpperCase() +
         values.name.slice(1).toLowerCase();
 
-      //   console.log(userName);
       props.setUserName(userName);
 
       firebase.auth
         .createUserWithEmailAndPassword(values.email, values.password)
         .then((userCredential) => {
           const user: User = userCredential.user;
-          sendEmailVerification(user!).then(() => {
-            console.log(`sent`);
-          });
+          console.log(`created`);
+          props.sendEmail();
+
           updateProfile(user!, {
             displayName: userName,
           }).then(() => {
@@ -174,9 +168,9 @@ const SignUp = (props: Props) => {
 };
 
 const mapDispatchToProps = {
-  onSignup: (data: LoginData) => actions.signupAsync(data),
   onSignUpGoogle: () => actions.loginGoogle(),
   setUserName: (userName: string) => actions.setUserName(userName),
+  sendEmail: () => actions.sendVerificationEmail(false),
 };
 const connector = connect(null, mapDispatchToProps);
 

@@ -12,8 +12,10 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 
 const Rater = (props: Props) => {
+  // const [expanded, setExpanded] = useState<boolean>(false);
   const [value, setValue] = useState<number | null>(0);
   const userDb = useContext(DbContext);
   const [entry, setEntry] = useState<types.RaterEntry | null>(null);
@@ -84,18 +86,18 @@ const Rater = (props: Props) => {
   };
 
   const select = (event: any) => {
-    if (!!event.target.closest(`.main-button`)) return;
+    // if (!!event.target.closest(`.main-button`)) return;
     props.selector(props.rater.id);
   };
 
   return (
     <div
-      onClick={select}
+      // onClick={select}
       style={{
         borderColor: props.rater.color,
-        boxShadow: props.isSelected
-          ? `1px 1px 10px 1px ${props.rater.color}`
-          : `none`,
+        // boxShadow: props.isSelected
+        //   ? `1px 1px 10px 1px ${props.rater.color}`
+        //   : `none`,
       }}
       className={trackerClasses.Tracker}
     >
@@ -109,6 +111,11 @@ const Rater = (props: Props) => {
           size="large"
           precision={0.5}
         />
+      </div>
+      <div className={trackerClasses.Expand}>
+        <svg onClick={select} width="30" height="30" fill="currentColor">
+          <use href={`${icons}#chevron-expand`} />
+        </svg>
       </div>
     </div>
   );
@@ -125,7 +132,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   rater: types.RaterType;
   date: Date;
-  isSelected: boolean;
+  // isSelected: boolean;
   selector: (id: string) => void;
 };
 

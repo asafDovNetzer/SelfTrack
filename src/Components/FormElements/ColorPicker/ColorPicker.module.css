@@ -1,0 +1,44 @@
+.ColorPicker {
+  width: 280px;
+  height: 320px;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
+  border: 1px solid gainsboro;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid gainsboro;
+  overflow: hidden;
+}
+.Switch button {
+  border: none;
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+}
+.Pickers {
+  width: 280px;
+  overflow-x: hidden;
+}
+
+.Slider {
+  width: 560px;
+  height: 270px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transition: transform 0.2s;
+}
+
+.Picker {
+  width: 280px;
+  height: 270px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -1,27 +1,21 @@
 import React from "react";
-// import { auth } from "../../Firebase";
 import classes from "./ValidatePage.module.css";
-// import UIclasses from "../UI/General.module.css";
-import * as actions from "../../Store/Actions/ActionsIndex";
 import { connect, ConnectedProps } from "react-redux";
 import { useEffect } from "react";
 import { State } from "../../Types";
 import Divider from "../UI/Divider";
-import { sendEmailVerification } from "firebase/auth";
-import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import Spinner from "../Spinner/Spinner";
+import * as actions from "../../Store/Actions/ActionsIndex";
 
 const ValidatePage = (props: PropsFromRedux) => {
   useEffect(() => {
-    if (props.user?.emailVerified) {
-      window.location.href = "/";
-    }
+    if (!props.user) return;
+
+    if (props.user.emailVerified) window.location.href = "/app";
   }, [props.user]);
 
   const handleVerify = () => {
-    sendEmailVerification(props.user!).then(() => {
-      console.log(`email varification sent`);
-    });
+    props.sendEmail();
   };
 
   if (!props.user) {
@@ -39,18 +33,6 @@ const ValidatePage = (props: PropsFromRedux) => {
         <p>
           A verification email was sent to <mark>{props.user!.email}</mark>
         </p>
-        <p>Please reload once verification is complete</p>
-        <button
-          className={classes.ReloadButton}
-          onClick={() => {
-            window.location.href = "/validate";
-          }}
-        >
-          <svg width="30" height="30" fill="currentColor">
-            <use href={`${icons}#arrow-counterclockwise`} />
-          </svg>
-        </button>
-        <Divider />
         <p>
           If you don't see the email, you can
           <button
@@ -71,8 +53,9 @@ const mapStateToProps = (state: State) => ({
 });
 
 const mapDispatchToProps = {
-  noActiveUser: () => actions.logout(),
+  sendEmail: () => actions.sendVerificationEmail(true),
 };
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;

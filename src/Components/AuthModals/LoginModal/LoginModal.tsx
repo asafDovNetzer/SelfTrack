@@ -85,7 +85,7 @@ const Login = (props: Props) => {
       <form className={classes.Form} onSubmit={formik.handleSubmit}>
         <div className={classes.InputField}>
           <TextField
-            id="email"
+            id="emailLogin"
             name="email"
             label="Email"
             variant="outlined"
@@ -98,7 +98,7 @@ const Login = (props: Props) => {
         </div>
         <div className={classes.InputField}>
           <TextField
-            id="password"
+            id="passwordLogin"
             name="password"
             label="Password"
             type="password"

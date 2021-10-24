@@ -1,0 +1,51 @@
+.Counter {
+  width: 140px;
+  height: 32px;
+  margin-bottom: 3px;
+  border-radius: 6px;
+  border: 1.5px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  box-sizing: content-box;
+}
+
+.Counter button {
+  border: none;
+  background-color: transparent;
+  font-size: 120%;
+}
+
+.Left {
+  border-bottom-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.Right {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.Right:disabled:hover {
+  background-color: white;
+}
+
+.Counter button:hover {
+  background-color: rgb(236, 236, 236);
+}
+
+.Count {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  height: 32px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Count h3 {
+  height: min-content;
+  width: min-content;
+  font-size: 160%;
+  margin-bottom: 0px;
+  text-align: center;
+}

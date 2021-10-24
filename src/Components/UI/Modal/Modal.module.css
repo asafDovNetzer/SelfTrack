@@ -1,8 +1,9 @@
 .Modal {
   max-width: 700px;
   min-width: 70%;
-  max-height: 90vh;
-  min-height: 70%;
+  height: 85vh;
+  /* max-height: 90vh; */
+  /* min-height: 70%; */
   border-radius: 30px;
   background-color: white;
   padding: 10px;
@@ -33,7 +34,7 @@
   .Modal {
     border-radius: 0px;
     max-width: unset;
-    max-height: unset;
+    /* max-height: unset; */
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -48,6 +49,7 @@
     background-color: transparent;
     border: none;
     /* float: right; */
+    background-color: white;
     position: absolute;
     top: 0;
     right: 0;

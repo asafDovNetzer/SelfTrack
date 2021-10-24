@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { reletiveTimestampToString } from "../../HalperFunctions/HandleStopwatches";
+import classes from "./Clock.module.css";
 
 const Clock: React.FC<{
   accum: number;
@@ -41,17 +42,8 @@ const Clock: React.FC<{
   }, [accum, lastEntry, gap]);
 
   return (
-    <div>
-      <h3
-        style={{
-          margin: `auto auto`,
-          display: `block`,
-          textAlign: `center`,
-          fontWeight: "lighter",
-        }}
-      >
-        {output}
-      </h3>
+    <div className={classes.Clock}>
+      <h3>{output}</h3>
     </div>
   );
 };

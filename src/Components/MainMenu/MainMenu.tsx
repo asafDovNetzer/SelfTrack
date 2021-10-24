@@ -34,7 +34,7 @@ const MainMenu = (props: Props) => {
   };
 
   const handleSelect = (selected: string) => {
-    console.log(selected);
+    props.onCloseSidedrawer();
     props.onSelect(selected);
   };
 
@@ -92,6 +92,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 
 type Props = PropsFromRedux & {
   onSignup: () => void;
+  onCloseSidedrawer: () => void;
 };
 
 export default connector(MainMenu);
