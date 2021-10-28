@@ -24,8 +24,8 @@ const CounterIcon = (props: Props) => {
       <button className={classes.Left} onClick={plus}>
         +
       </button>
-      <div className={classes.Count}>
-        <h3>{props.count}</h3>
+      <div className={classes.CountDiv}>
+        <h3 className={classes.Count}>{props.count}</h3>
       </div>
       <button
         disabled={checkDisabled()}

@@ -340,6 +340,7 @@ const NewUserGuide = (props: Props) => {
                     color={trackerColor}
                     name={type.slice(0, 1).toUpperCase() + type.slice(1)}
                     size={0}
+                    options={null}
                   />
                 </div>
               );

@@ -229,6 +229,7 @@ const TrackersForm = React.memo((props: Props) => {
         <FakeTracker
           type={choosenType}
           color={color}
+          options={null}
           name={
             formik.values.name
               ? formik.values.name

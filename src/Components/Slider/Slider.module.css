@@ -1,5 +1,5 @@
 .SliderWide {
-  margin-top: 200px;
+  padding-top: 800px;
   margin-bottom: 200px;
   width: 100vw;
   height: 380px;
@@ -7,6 +7,9 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  transform: translateY(-800px);
+  z-index: 1;
+  background-image: linear-gradient(to top, white, transparent);
 }
 
 .SilderContainer {

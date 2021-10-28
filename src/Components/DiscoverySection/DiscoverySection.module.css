@@ -1,0 +1,212 @@
+.Main {
+  width: 1000px;
+  height: 90vh;
+  overflow-x: hidden;
+}
+
+.Slider {
+  width: 3000px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.Options {
+  height: 80%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.Discovery {
+  height: 100%;
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: left;
+  overflow: hidden;
+}
+
+.Left {
+  width: 500px;
+  margin-top: 100px;
+  margin-left: 0px;
+  height: max-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+}
+
+/* .Header {
+  height: 50px;
+  width: 430px;
+  background-color: rgb(110, 16, 132);
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+  transform: rotateZ(-4deg);
+  z-index: 1;
+} */
+
+.Header {
+  height: 50px;
+  width: 430px;
+  /* background-color: rgb(110, 16, 132); */
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 10px;
+  /* transform: rotateZ(-4deg); */
+  z-index: 1;
+  border: 1.5px solid lightgray;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.Inactive {
+  transform: translateX(-300px);
+}
+
+.Inactive:hover {
+  transform: translateX(-260px);
+  box-shadow: 1px 1px 200px 50px rgba(106, 90, 116, 0.3);
+}
+
+/* .Name {
+  color: rgb(255, 220, 249);
+  margin: 0px;
+  font-family: "Raleway", sans-serif;
+  transform: rotateZ(3deg);
+  font-weight: 200;
+  letter-spacing: 0.8px;
+} */
+
+.Name {
+  /* color: rgb(255, 220, 249); */
+  margin: 0px;
+  font-family: "Raleway", sans-serif;
+  /* transform: rotateZ(3deg); */
+  font-weight: 200;
+  /* letter-spacing: 0.8px; */
+}
+
+.Img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: -25px;
+  right: -25px;
+}
+
+/* .Par {
+  width: 320px;
+  height: 120px;
+  margin-top: 10px;
+  margin-left: 30px;
+  padding: 12px;
+  font-family: "Raleway", sans-serif;
+  background-color: rgb(245, 98, 169);
+  transform: rotateZ(1deg);
+  z-index: 0;
+  position: relative;
+  color: rgb(110, 16, 132);
+} */
+
+.Par {
+  width: 320px;
+  height: 120px;
+  margin-top: 10px;
+  margin-left: 30px;
+  padding: 12px;
+  font-family: "Raleway", sans-serif;
+  /* background-color: rgb(245, 98, 169); */
+  /* transform: rotateZ(1deg); */
+  z-index: 0;
+  position: relative;
+  color: rgb(110, 16, 132);
+  border: 1.5px solid lightgray;
+  border-radius: 10px;
+}
+
+.Par p {
+  font-weight: 300;
+  font-size: 130%;
+}
+
+.Par h1 {
+  font-size: 450%;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  transform: rotateZ(-4deg);
+}
+
+.Trackers {
+  transform: scale(0.8);
+  position: absolute;
+  bottom: -160px;
+  left: 20px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  transition: left 0.25s;
+}
+
+.TopTracker {
+  transform: rotateZ(2deg);
+  /* margin-bottom: 5px; */
+}
+.BottomTracker {
+  transform: rotateZ(-1deg);
+}
+.Chart {
+  position: absolute;
+  bottom: -150px;
+  right: -370px;
+  width: 560px;
+  height: 250px;
+  transition: right 0.25s;
+}
+
+.StartButton {
+  position: absolute;
+  bottom: -20px;
+  right: -80px;
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  font-size: 120%;
+  color: purple;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  padding: 0px;
+  border: none;
+  box-shadow: 1px 1px 200px 50px rgba(106, 90, 116, 0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.StartButton:hover {
+  transform: scale(0.9);
+  box-shadow: 1px 1px 200px 120px rgba(106, 90, 116, 0.3);
+}
+
+/* .Shadow {
+  width: 100%;
+  transform: translateY(-100px);
+  height: 60px;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: 10px 80px 13px -14px rgba(99, 60, 121, 0.4);
+} */

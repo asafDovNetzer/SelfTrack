@@ -16,3 +16,10 @@ export const goTo = (selected: string) => {
     selected: selected,
   };
 };
+
+export const displayEntries = (id: string) => {
+  return {
+    type: actionTypes.DISPLAY_ENTRIES,
+    id: id,
+  };
+};

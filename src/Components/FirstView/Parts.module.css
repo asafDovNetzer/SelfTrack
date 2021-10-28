@@ -1,0 +1,372 @@
+.Left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  animation: opacity 10s 5s infinite;
+}
+
+.Right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding-right: 200px;
+  padding-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  animation: opacity 10s infinite;
+}
+
+.Par {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 1;
+  }
+  2% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  51% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.Par h1 {
+  font-size: 300%;
+  font-weight: 800;
+  color: rgb(68, 3, 129);
+  animation: slideDown2 10s infinite;
+}
+
+@keyframes slideDown2 {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  2% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  4% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  49% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  51% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  94% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.Par p {
+  z-index: 1;
+  position: relative;
+  font-size: 140%;
+  width: 40vw;
+  font-weight: 200;
+  animation: slideDown3 10s infinite;
+}
+
+@keyframes slideDown3 {
+  0% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+  5% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  49% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  51% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.TrackerSlide {
+  width: 300px;
+  height: 70px;
+  position: relative;
+  margin-left: 20px;
+}
+
+.Trackers {
+  width: 300px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  /* transform: translateX(-275px); */
+}
+
+.Tracker1 {
+  animation: tracker1Move 10s infinite;
+}
+
+@keyframes tracker1Move {
+  0% {
+    transform: translateX(-400px);
+  }
+  7% {
+    transform: translateX(160px);
+  }
+  49% {
+    transform: translateX(160px);
+  }
+  52% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+.Tracker2 {
+  animation: tracker2Move 10s infinite;
+}
+
+@keyframes tracker2Move {
+  0% {
+    transform: translateX(-400px);
+  }
+  5.5% {
+    transform: translateX(80px);
+  }
+  49% {
+    transform: translateX(80px);
+  }
+  52% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+.Tracker3 {
+  animation: tracker3Move 10s infinite;
+}
+
+@keyframes tracker3Move {
+  0% {
+    transform: translateX(-400px);
+  }
+  4.5% {
+    transform: translateX(30px);
+  }
+  49% {
+    transform: translateX(30px);
+  }
+  52% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+.Tracker4 {
+  animation: tracker4Move 10s infinite;
+}
+
+@keyframes tracker4Move {
+  0% {
+    transform: translateX(-400px);
+  }
+  4% {
+    transform: translateX(0px);
+  }
+  49% {
+    transform: translateX(0px);
+  }
+  52% {
+    transform: translateX(-400px);
+  }
+  100% {
+    transform: translateX(-400px);
+  }
+}
+
+/* .Tracker {
+  position: absolute;
+  opacity: 0;
+  animation: spin 16s linear infinite;
+  /* color: rgb(207, 181, 141); */
+/* } */
+
+.Chart {
+  /* transform: matrix(1.3, 0, -0.5, 1.2, 40, -20); */
+  opacity: 0.8;
+  animation: fromRight 10s 5s infinite forwards;
+}
+
+.Stopwatch {
+  animation: ticking 2s linear 0s infinite both;
+}
+
+.Inspect {
+  animation: inspect 3s linear 1s infinite both;
+}
+
+@keyframes fromRight {
+  0% {
+    transform: translate(1000px, 100px) scale(0.6)
+      matrix(1.3, 0, -0.5, 1.2, 40, -20);
+  }
+  10% {
+    transform: translate(0px, 0px) scale(0.8) matrix(1.3, 0, -0.5, 1.2, 40, -20);
+  }
+  24% {
+    transform: translate(0px, 0px) scale(0.85)
+      matrix(1.3, 0, -0.5, 1.2, 40, -20);
+  }
+  98% {
+    transform: translate(0px, 0px) scale(0.9) matrix(1.3, 0, -0.5, 1.2, 40, -20);
+  }
+  100% {
+    transform: translate(1000px, 100px) scale(0.6)
+      matrix(1.3, 0, -0.5, 1.2, 40, -20);
+  }
+}
+
+@keyframes inspect {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  3% {
+    transform: translate(50px, -10px);
+  }
+  23.5% {
+    transform: translate(50px, -10px);
+  }
+  27% {
+    transform: translate(45px, 22px);
+  }
+  48% {
+    transform: translate(45px, 22px);
+  }
+  50.5% {
+    transform: translate(-14px, -28px);
+  }
+  72% {
+    transform: translate(-14px, -28px);
+  }
+  74.5% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-80px) scale(0.9);
+    opacity: 0;
+    z-index: 1;
+  }
+  1% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+  24% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+  25% {
+    transform: translateY(80px) scale(0.9);
+    opacity: 0;
+    z-index: 1;
+  }
+  50% {
+    transform: translateY(-80px) scale(0.9);
+    opacity: 0;
+    z-index: 1;
+  }
+  75% {
+    /* display: none; */
+  }
+  100% {
+    /* display: none; */
+  }
+}
+
+@keyframes ticking {
+  0% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+  4% {
+    transform: rotateZ(-15deg) translate(8px, -7px);
+  }
+  46% {
+    transform: rotateZ(-15deg) translate(8px, -7px);
+  }
+  50% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+  54% {
+    transform: rotateZ(15deg) translate(4px, -9px);
+  }
+  96% {
+    transform: rotateZ(15deg) translate(4px, -9px);
+  }
+  100% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+}
+
+@media (max-width: 499px) {
+  .Left {
+    width: 90vw;
+    margin-left: 20px;
+  }
+
+  .Right {
+    padding-right: 0px;
+  }
+
+  .Par h1 {
+    font-size: 240%;
+  }
+  .Par p {
+    width: 80vw;
+  }
+
+  .Trackers {
+    transform: scale(0.75) translateX(-80px) translateY(-70px);
+  }
+}

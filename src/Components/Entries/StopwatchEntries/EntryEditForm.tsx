@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classes from "./EntryEditForm.module.css";
-
 import { Formik, Form, Field } from "formik";
 import * as types from "../../../Types";
 import {
@@ -11,8 +10,9 @@ import { reletiveTimestampToString } from "../../../HalperFunctions/HandleStopwa
 
 const EntryEditForm: React.FC<{
   entry: types.CompleteEntry | null;
+  onCancel: () => void;
   submitHandler: (newFrom: number, newTo: number) => void;
-}> = React.memo(({ entry, submitHandler }) => {
+}> = React.memo(({ entry, submitHandler, onCancel }) => {
   const [newFrom, setNewFrom] = useState<number>(entry!.from.timestamp);
   const [newTo, setNewTo] = useState<number>(entry!.to.timestamp);
   const [newSubTotal, setNewSubTotal] = useState<number>(newTo - newFrom);
@@ -143,9 +143,13 @@ const EntryEditForm: React.FC<{
             <button
               onClick={() => submitHandler(newFrom, newTo)}
               type="submit"
+              className={classes.SaveButton}
               disabled={!!errors.to || !!errors.from}
             >
               Save Changes
+            </button>
+            <button className={classes.CancelButton} onClick={onCancel}>
+              Cancel
             </button>
           </Form>
         )}

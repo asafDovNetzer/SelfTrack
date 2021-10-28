@@ -9,6 +9,7 @@ const initialState: types.State = {
   errorMessage: null,
   submitionState: `await`,
   selectedView: `trackers`,
+  entriesToDisplay: ``,
   errorModalFunc: () => {},
 };
 
@@ -23,6 +24,11 @@ const reducer = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         submitionState: action.state,
+      };
+    case actionTypes.DISPLAY_ENTRIES:
+      return {
+        ...state,
+        entriesToDisplay: action.id,
       };
     case actionTypes.GO_TO:
       return {

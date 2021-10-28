@@ -113,16 +113,34 @@
   font-family: "Raleway", sans-serif;
   font-weight: 300;
   margin: 4px;
+  border: none;
+  transition: background-color 0.2s;
 }
 
-.EditButton {
-  border: 4px solid purple;
+.EntriesButton {
+  background-color: rgb(131, 23, 134);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+
+.EntriesButton svg {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.EntriesButton:hover {
+  background-color: rgb(151, 35, 155);
 }
 
 .DeleteButton {
-  border: 4px solid rgb(255, 0, 0);
   background-color: red;
   color: white;
+}
+.DeleteButton:hover {
+  background-color: rgb(255, 55, 55);
 }
 
 @media (max-width: 499px) {

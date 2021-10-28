@@ -95,6 +95,7 @@ export type State = {
   errorMessage: null | string;
   submitionState: boolean | string;
   selectedView: string;
+  entriesToDisplay: string;
   errorModalFunc: () => void;
 };
 
@@ -102,12 +103,6 @@ export type LoginData = {
   email: string;
   password: string;
 };
-
-// export type SignupData = {
-//   email: string;
-//   password: string;
-//   passwordConfirmation: string;
-// };
 
 export type Datasets = {
   data: number[];

@@ -55,7 +55,11 @@ const EntryEditModal: React.FC<{
         Change the beginning and ending
       </div>
       <div style={{ width: `100%`, height: `max-content` }}>
-        <EntryEditForm entry={entry} submitHandler={submit} />
+        <EntryEditForm
+          onCancel={closeHandler}
+          entry={entry}
+          submitHandler={submit}
+        />
       </div>
     </Modal>
   );

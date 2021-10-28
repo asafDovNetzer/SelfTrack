@@ -13,7 +13,7 @@ const testimonies = [
   {
     name: `Jonas`,
     location: `Brussels, Belgium`,
-    img: `Images/eldad2.jpg`,
+    img: `Images/eldad.jpg`,
     testimony: `After using the app for about a month, i realized the underlying issue of my poor sleep quality. Without the charts in front of me, I just couldn't see it.`,
   },
   {
@@ -26,27 +26,36 @@ const testimonies = [
 
 const Slider = () => {
   const [slide, setSlide] = React.useState<number>(0);
+  const [interval, setInterval] = React.useState<any>(null);
 
   const sildeLeft = () => {
     const slidePosition = slide;
     setSlide(slidePosition - 1);
+    clearInterval(interval);
+    setInterval(null);
   };
 
   const slideRight = () => {
     const slidePosition = slide;
     setSlide(slidePosition + 1);
+    clearInterval(interval);
+    setInterval(null);
   };
 
   React.useEffect(() => {
-    const interval = setTimeout(() => {
+    if (interval) return;
+
+    const intr = setTimeout(() => {
       const slidePosition = slide;
       setSlide(slidePosition + 1);
     }, 8000);
 
+    setInterval(intr);
+
     return () => {
       clearTimeout(interval);
     };
-  }, [slide]);
+  }, [slide, interval]);
 
   const width: number = window.innerWidth > 500 ? 500 : window.innerWidth - 80;
 

@@ -9,7 +9,7 @@ export {
   setUserName, // checkEmailVerification,
 } from "./AuthActions";
 
-export { setError, goTo } from "./UxActions";
+export { setError, goTo, displayEntries } from "./UxActions";
 
 export { setSubmitionState } from "./FormActions";
 

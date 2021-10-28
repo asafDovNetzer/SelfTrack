@@ -69,6 +69,7 @@ const NewTracker = (props: Props) => {
                 color={tracker.color}
                 name={tracker.name}
                 size={1}
+                options={null}
               />
             </div>
           );

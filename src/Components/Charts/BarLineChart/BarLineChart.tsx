@@ -8,7 +8,8 @@ const BarChart: React.FC<{
   datasets: types.BarChartDataset[];
   labels: string[];
   options: any;
-}> = React.memo(({ labels, datasets, options }) => {
+  width: string;
+}> = React.memo(({ labels, datasets, options, width }) => {
   const chartRef = useRef<Chart | null>(null);
 
   const canvasCallback = useCallback((canvas: HTMLCanvasElement | null) => {
@@ -27,7 +28,6 @@ const BarChart: React.FC<{
 
   useEffect(() => {
     if (chartRef.current) {
-      // console.log(datasets);
       chartRef.current.data = {
         labels: labels,
         datasets: datasets,
@@ -41,7 +41,7 @@ const BarChart: React.FC<{
 
   return (
     <Aux>
-      <div className={classes.BarChart}>
+      <div className={classes.BarChart} style={{ width: width }}>
         <canvas ref={canvasCallback}></canvas>
       </div>
     </Aux>

@@ -1,28 +1,52 @@
 import React from "react";
 import classes from "./LandingPage.module.css";
-import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+// import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
+// import { LazyLoadImage } from "react-lazy-load-image-component";
 import Footer from "../../Components/Footer/Footer";
 import Slider from "../../Components/Slider/Slider";
+// import DiscoverySection from "../../Components/DiscoverySection/DiscoverySection";
+import { connect, ConnectedProps } from "react-redux";
+import { State } from "../../Types";
+import FirstView from "../../Components/FirstView/FirstView";
+import Modal from "../../Components/UI/Modal/Modal";
+import AuthModal from "../../Components/AuthModals/AuthModal";
 
-const LandingPage = () => {
-  const leftImage =
-    window.innerWidth > 500 ? (
-      <img width="900px" alt="left-img" src="/Images/trackers9.png" />
-    ) : (
-      <img width="300px" alt="left-img" src="/Images/trackers10.png" />
-    );
+const LandingPage = (props: Props) => {
+  const [displayUserModal, setDisplayUserModal] =
+    React.useState<boolean>(false);
+  const [slide, setSlide] = React.useState<number>(500);
 
-  const rightImage =
-    window.innerWidth > 500 ? (
-      <img width="600px" alt="left-img" src="/Images/data4.png" />
-    ) : (
-      <img width="300px" alt="left-img" src="/Images/data4.png" />
-    );
+  const handleButton = () => {
+    if (props.user) {
+      window.location.href = `/app`;
+    } else {
+      if (window.innerWidth > 500) {
+        setSlide(500);
+        setDisplayUserModal(true);
+      } else {
+        window.location.href = `/login`;
+      }
+    }
+  };
+  // const leftImage =
+  //   window.innerWidth > 500 ? (
+  //     <img width="900px" alt="left-img" src="/Images/trackers9.png" />
+  //   ) : (
+  //     <img width="300px" alt="left-img" src="/Images/trackers10.png" />
+  //   );
+
+  // const rightImage =
+  //   window.innerWidth > 500 ? (
+  //     <img width="600px" alt="left-img" src="/Images/data4.png" />
+  //   ) : (
+  //     <img width="300px" alt="left-img" src="/Images/data4.png" />
+  //   );
 
   return (
     <div className={`${classes.LandingPage} landing`}>
-      <div className={classes.Marketing}>
+      <FirstView onClick={handleButton} />
+      {/* <DiscoverySection /> */}
+      {/* <div className={classes.Marketing}>
         <div
           className={classes.Par}
           style={{ marginLeft: window.innerWidth > 500 ? `150px` : `30px` }}
@@ -72,11 +96,27 @@ const LandingPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       <Slider />
       {window.innerWidth > 500 ? <Footer /> : null}
+      <Modal
+        show={displayUserModal && !props.user}
+        onHide={() => setDisplayUserModal(false)}
+      >
+        <AuthModal slide={slide} />
+      </Modal>
     </div>
   );
 };
 
-export default LandingPage;
+const mapStateToProps = (state: State) => ({
+  user: state.user,
+});
+
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type Props = PropsFromRedux & {};
+
+export default connector(LandingPage);

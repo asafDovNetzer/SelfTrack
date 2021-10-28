@@ -57,7 +57,6 @@ const BarLineChartPreAmp: React.FC<{
             position: "left",
             title: {
               display: false,
-              // text: `Hours`,
             },
           },
           y1: {
@@ -309,6 +308,7 @@ const BarLineChartPreAmp: React.FC<{
           datasets={trackerDatasets}
           labels={dateStrings}
           options={options}
+          width=""
         />
       </div>
     );

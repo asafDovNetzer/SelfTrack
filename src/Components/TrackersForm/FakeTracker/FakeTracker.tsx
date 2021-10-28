@@ -15,14 +15,19 @@ const FakeTracker: React.FC<{
   color: string;
   name: string;
   size: number;
-}> = React.memo(({ type, color, name, size }) => {
+  options: any;
+}> = React.memo(({ type, color, name, size, options }) => {
   const [count, setCount] = React.useState<number>(0);
   const [check, setCheck] = React.useState<boolean>(true);
   const [accum, setAccum] = React.useState<number>(0);
   const [isRunning, setIsRunning] = React.useState<boolean>(false);
   const [lastEntry, setLastEntry] = React.useState<number>(Date.now());
 
-  console.log(size);
+  React.useEffect(() => {
+    if (!options) return;
+
+    if (options.isRunning) setIsRunning(true);
+  }, [options]);
 
   const checkerHandler = () => {
     const newCheck = !check;
@@ -56,7 +61,7 @@ const FakeTracker: React.FC<{
               <use href={`${icons}#${isRunning ? `pause` : `play`}-circle`} />
             </svg>
           </button>
-          <h5 className={trackerClasses.Header}>{name}</h5>
+          <h5 className={stopwatchClasses.Header}>{name}</h5>
           <Clock accum={accum} isRunning={isRunning} lastEntry={lastEntry} />
         </div>
       );
@@ -64,7 +69,7 @@ const FakeTracker: React.FC<{
     case `checker`:
       trackerElement = (
         <div className={checkerClasses.Content}>
-          <h5 className={trackerClasses.Header}>{name}</h5>
+          <h5 className={checkerClasses.Header}>{name}</h5>
           <div className={checkerClasses.CheckBox}>
             <svg
               onClick={checkerHandler}
@@ -81,7 +86,7 @@ const FakeTracker: React.FC<{
     case `counter`:
       trackerElement = (
         <div className={counterClasses.Content}>
-          <h5 className={trackerClasses.Header}>{name}</h5>
+          <h5 className={counterClasses.Header}>{name}</h5>
           <CounterIcon
             count={count}
             size={size}
@@ -94,11 +99,11 @@ const FakeTracker: React.FC<{
     default:
       trackerElement = (
         <div className={raterClasses.Content}>
-          <h5 className={trackerClasses.Header}>{name}</h5>
+          <h5 className={raterClasses.Header}>{name}</h5>
           <Rating
             className={raterClasses.Rating}
             name="stars"
-            defaultValue={3}
+            defaultValue={4}
             size="large"
           />
         </div>

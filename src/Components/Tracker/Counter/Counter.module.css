@@ -11,6 +11,7 @@
   height: 28px;
   margin: auto auto;
   text-align: center;
-  font-family: "Raleway", sans-serif;
   color: rgb(43, 43, 43);
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
 }

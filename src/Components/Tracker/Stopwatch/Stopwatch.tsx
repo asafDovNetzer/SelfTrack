@@ -15,6 +15,7 @@ import {
   where,
 } from "firebase/firestore";
 import { connect, ConnectedProps } from "react-redux";
+import * as actions from "../../../Store/Actions/ActionsIndex";
 
 const Stopwatch = (props: Props) => {
   // const [expanded, setExpanded] = useState<boolean>(false);
@@ -31,8 +32,6 @@ const Stopwatch = (props: Props) => {
     setEntries([]);
     setIsRunning(false);
     setAccum(0);
-
-    // console.log(userDb, props.user);
 
     const entriesRef = collection(userDb!, "entries");
 
@@ -103,8 +102,6 @@ const Stopwatch = (props: Props) => {
       }
     }
 
-    // console.log(entriesTimestamps);
-
     let accum: number = 0;
 
     entriesTimestamps.forEach((entry, index) => {
@@ -136,19 +133,14 @@ const Stopwatch = (props: Props) => {
   };
 
   const select = (event: any) => {
-    // if (!!event.target.closest(`.main-button`)) return;
     props.selector(props.stopwatch.id);
   };
 
   return (
     <div
-      // onClick={select}
       className={trackerClasses.Tracker}
       style={{
         borderColor: props.stopwatch.color,
-        // boxShadow: props.isSelected
-        //   ? `1px 1px 10px 1px ${props.stopwatch.color}`
-        //   : `none`,
       }}
     >
       <div className={classes.Content}>
@@ -170,11 +162,11 @@ const Stopwatch = (props: Props) => {
         </svg>
       </div>
       <StopwatchEntries
-        show={false}
+        show={props.entriesToDisplay === props.stopwatch.id}
         entries={entries}
         stopwatch={props.stopwatch}
         date={props.date}
-        closeHandler={() => {}}
+        closeHandler={() => props.displayEntries(``)}
       />
     </div>
   );
@@ -182,16 +174,20 @@ const Stopwatch = (props: Props) => {
 
 const mapStateToProps = (state: types.State) => ({
   user: state.user,
+  entriesToDisplay: state.entriesToDisplay,
 });
 
-const connector = connect(mapStateToProps);
+const mapDispatchToProps = {
+  displayEntries: (id: string) => actions.displayEntries(id),
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
 type Props = PropsFromRedux & {
   stopwatch: types.StopwatchType;
   date: Date;
-  // isSelected: boolean;
   selector: (id: string) => void;
 };
 

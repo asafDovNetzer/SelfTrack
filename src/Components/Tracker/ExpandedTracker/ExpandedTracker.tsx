@@ -220,7 +220,6 @@ const ExpandedTracker = (props: Props) => {
           onClose={handleCloseBox}
         >
           <div className={classes.Color}>
-            {/* <CirclePicker onChangeComplete={handleChangeColor} color={color} /> */}
             <ColorPicker color={color} onChange={handleChangeColor} />
           </div>
         </Box>
@@ -232,7 +231,20 @@ const ExpandedTracker = (props: Props) => {
           onClose={handleCloseBox}
         >
           <div className={classes.ButtonPanel}>
-            {/* <button className={classes.EditButton}>Delete Entries</button> */}
+            {type === `stopwatch` ? (
+              <button
+                onClick={() => {
+                  props.displayEntries(props.id);
+                  props.onClose();
+                }}
+                className={classes.EntriesButton}
+              >
+                <svg width="16" height="16" fill="currentColor">
+                  <use href={`${icons}#list`} />
+                </svg>
+                Entries
+              </button>
+            ) : null}
             <button onClick={handleDelete} className={classes.DeleteButton}>
               Delete Tracker
             </button>
@@ -273,6 +285,7 @@ const mapDispatchToProps = {
     field: string,
     value: string | number
   ) => actions.updateField(userDb, id, field, value),
+  displayEntries: (id: string) => actions.displayEntries(id),
 };
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
