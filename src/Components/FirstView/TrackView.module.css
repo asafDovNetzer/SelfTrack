@@ -98,15 +98,16 @@
 }
 
 .FixedTracker {
-  z-index: 0;
   position: fixed;
+  z-index: 0;
   right: 50px;
   border: none;
   transform: scale(0.8) translateY(-20px) translateX(-50px);
 }
 
 .Exp {
-  margin-top: 10px;
+  background-color: white;
+  margin-top: 6px;
   max-width: 70%;
   padding: 4px 20px;
   border: 1px solid grey;

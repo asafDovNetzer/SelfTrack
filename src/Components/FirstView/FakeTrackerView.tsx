@@ -51,12 +51,7 @@ const FakeTrackerView = (props: Props) => {
           color={props.color}
           size={1}
         />
-        <div
-          className={classes.Exp}
-          style={{
-            opacity: position === null ? 1 : 0,
-          }}
-        >
+        <div className={classes.Exp}>
           <p>{props.exp}</p>
         </div>
       </div>
