@@ -51,7 +51,7 @@ const MainMenu = (props: Props) => {
           <button onClick={goToLanding}>
             <img
               className={classes.Logo}
-              src={`./Images/logo3.svg`}
+              src={`./Images/logo7.svg`}
               alt="Stableyez"
             />
           </button>

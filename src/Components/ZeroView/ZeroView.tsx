@@ -26,7 +26,7 @@ const ZeroView = (props: Props) => {
     <div className={[classes.Main, `first-view`].join(` `)}>
       <img
         className={classes.Logo}
-        src={`./Images/logo6.svg`}
+        src={`./Images/logo7.svg`}
         alt="Stableyez"
       />
       <div className={classes.SubTitle}>
