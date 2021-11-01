@@ -62,38 +62,38 @@ const ZeroView = (props: Props) => {
         <div className={classes.SmallIcons}>
           <img
             style={{ animationDelay: `-6.4s` }}
-            src={`./Images/svg/bicycle.svg`}
+            src={`./Images/bicycle.svg`}
             alt="bicycle"
             height="70"
           />
           <img
             style={{ animationDelay: `-4.8s` }}
-            src={`./Images/svg/piano.svg`}
+            src={`./Images/piano.svg`}
             alt="piano"
             height="50"
           />
           <img
             style={{ animationDelay: `-3.2s` }}
-            src={`./Images/svg/social.svg`}
+            src={`./Images/social.svg`}
             alt="social"
             height="60"
           />
           <img
             style={{ animationDelay: `-1.6s` }}
-            src={`./Images/svg/bowl.svg`}
+            src={`./Images/bowl.svg`}
             alt="bowl"
             height="60"
           />
           <img
             style={{ animationDelay: `0s` }}
-            src={`./Images/svg/laptop.svg`}
+            src={`./Images/laptop.svg`}
             alt="laptop"
             height="60"
           />
         </div>
         <img
           className={classes.Confused}
-          src={`./Images/svg/confused.svg`}
+          src={`./Images/confused.svg`}
           alt="confused?"
         />
       </div>
