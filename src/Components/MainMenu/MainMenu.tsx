@@ -73,20 +73,28 @@ const MainMenu = (props: Props) => {
               props.selectedView === `data` ? classes.Active : ``
             }`}
           >
-            Data
+            Insight
           </button>
         </Auxiliary>
       )}
-      <button
-        name="second-view"
-        onClick={scrollTo}
-        className={classes.MenuItem}
-      >
-        Why Us
-      </button>
-      <button name="how-view" onClick={scrollTo} className={classes.MenuItem}>
-        How it Works
-      </button>
+      {window.location.pathname === `/` ? (
+        <Auxiliary>
+          <button
+            name="second-view"
+            onClick={scrollTo}
+            className={classes.MenuItem}
+          >
+            Why Us
+          </button>
+          <button
+            name="how-view"
+            onClick={scrollTo}
+            className={classes.MenuItem}
+          >
+            How it Works
+          </button>
+        </Auxiliary>
+      ) : null}
       {props.user ? (
         <button onClick={signoutHandler} className={classes.MenuItem}>
           Sign out
