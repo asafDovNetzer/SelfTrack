@@ -31,8 +31,11 @@
 }
 
 .Content {
-  transform: skewX(30deg) translateX(-40px);
-  margin-top: 60px;
+  transform: skewX(30deg);
+  /* margin-top: 60px; */
+  position: fixed;
+  bottom: 70px;
+  right: 80px;
 }
 
 .Show {
@@ -135,13 +138,15 @@
 
 @media (max-width: 499px) {
   .Fixed {
-    width: 130vw;
-    top: 50px;
+    width: 150vw;
+    top: 70px;
     transform: skewX(-45deg);
   }
   .Content {
-    transform: skewX(45deg) translateX(-140px);
-    padding-top: 210px;
+    transform: skewX(45deg);
+    bottom: 120px;
+    right: 220px;
+    /* padding-top: 240px; */
   }
   .Par h1 {
     font-size: 220%;
