@@ -1,0 +1,155 @@
+.Wraper {
+  margin-top: 200px;
+  width: 50vw;
+  height: max-content;
+  margin-bottom: 620px;
+}
+.Static {
+  width: 50vw;
+  height: calc(45vh);
+  position: relative;
+}
+
+.Fixed {
+  position: fixed;
+  top: 56px;
+  left: 50vw;
+  width: 65vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+  /* padding-right: 40px; */
+  transform: skewX(-30deg);
+  overflow: visible;
+  transition: opacity 0.2s;
+  background-color: rgb(72, 67, 73);
+  /* padding-top: 100px; */
+  /* padding-left: 140px; */
+  transition: opacity 0.3s;
+}
+
+.Content {
+  transform: skewX(30deg) translateX(-40px);
+  margin-top: 60px;
+}
+
+.Show {
+  opacity: 1;
+}
+
+.Par {
+  width: 100%;
+  margin: auto auto;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+.Icons {
+  width: 100%;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+  position: relative;
+  color: rgb(253, 242, 229);
+}
+
+.Header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: slideDown2 10s infinite;
+  color: rgb(72, 67, 73);
+  color: rgb(253, 242, 229);
+  transform: translateX(-50px);
+  font-family: "Raleway", sans-serif;
+}
+
+.Par h1 {
+  font-size: 300%;
+  font-weight: 300;
+  /* letter-spacing: -1px; */
+  transform: matrix(1, 0, 0, 1.35, 0, 0);
+}
+
+.Par h1 small {
+  font-size: 60%;
+}
+
+.Par h2 {
+  font-size: 130%;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+.Chart {
+  opacity: 0.8;
+  transition: transform 0.2s;
+}
+
+.Inspect {
+  position: absolute;
+  top: 20px;
+  right: 290px;
+  animation: inspect 3s linear 1s infinite both;
+}
+
+.Graph {
+  opacity: 0;
+  color: rgb(253, 242, 229);
+}
+
+@keyframes inspect {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  3% {
+    transform: translate(50px, -10px);
+  }
+  23.5% {
+    transform: translate(50px, -10px);
+  }
+  27% {
+    transform: translate(45px, 22px);
+  }
+  48% {
+    transform: translate(45px, 22px);
+  }
+  50.5% {
+    transform: translate(-14px, -28px);
+  }
+  72% {
+    transform: translate(-14px, -28px);
+  }
+  74.5% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@media (max-width: 499px) {
+  .Fixed {
+    width: 130vw;
+    top: 50px;
+    transform: skewX(-45deg);
+  }
+  .Content {
+    transform: skewX(45deg) translateX(-140px);
+    padding-top: 210px;
+  }
+  .Par h1 {
+    font-size: 220%;
+  }
+  .Par h2 {
+    font-size: 100%;
+  }
+  .Inspect {
+    right: 70px;
+  }
+}

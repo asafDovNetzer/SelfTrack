@@ -4,7 +4,7 @@
   border-radius: 50%;
   width: max-content;
   height: max-content;
-  color: rgb(6, 27, 83);
+  color: rgb(72, 67, 73);
   /* margin: 10px 10px; */
 }
 
@@ -13,27 +13,47 @@
   height: 100%;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
-.Header {
+.LogoCont {
+  width: 200px;
+}
+
+.LogoCont button {
   border: none;
   background-color: transparent;
   font-size: 220%;
   letter-spacing: 0.5px;
-  margin-left: 10px;
+  margin-left: 0px;
   margin-top: 5px;
   font-weight: 200;
   margin-bottom: 18px;
-  color: rgb(74, 7, 88);
+  animation: appear 0.2s 1 forwards;
+  /* color: rgb(74, 7, 88); */
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Logo {
+  width: 220px;
+  /* color: purple; */
 }
 
 .MenuItem {
-  width: 100px;
+  min-width: 100px;
+  max-width: 160px;
   border: none;
   background-color: transparent;
-  color: rgb(74, 7, 88);
+  color: rgb(72, 67, 73);
   border-bottom: 5px solid transparent;
   transition: border 0.2s;
   font-size: 120%;

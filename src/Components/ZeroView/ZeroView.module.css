@@ -1,0 +1,206 @@
+.Main {
+  height: 160vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+  padding-top: 10px;
+  z-index: 0;
+  /* position: relative; */
+}
+
+.ActionCall {
+  width: 300px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  color: rgb(34, 33, 31);
+  position: fixed;
+  top: 80vh;
+  right: 5vw;
+  border: 1px solid lightgray;
+  border: 1px solid rgb(236, 54, 141);
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.ActionCall button {
+  position: relative;
+  padding: 4px 30px;
+  font-size: 220%;
+  font-weight: 200;
+  margin: 6px;
+  width: max-content;
+  background-color: rgba(236, 54, 141, 0.8);
+  background-color: transparent;
+  border: 1px solid rgb(236, 54, 141);
+  color: white;
+  color: rgb(236, 54, 141);
+  border-radius: 22px;
+  transition: border 0.2s, letter-spacing 0.1s;
+}
+.ActionCall button:hover {
+  border: 1px solid transparent;
+  letter-spacing: 4px;
+}
+.ActionCall p {
+  font-size: 170%;
+}
+
+.Logo {
+  width: 500px;
+  z-index: 1;
+}
+
+.Confused {
+  width: 200px;
+}
+
+.AllIcons {
+  width: 250px;
+  height: 600px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.SmallIcons {
+  width: 250px;
+  height: 50px;
+  position: relative;
+}
+
+.SmallIcons img {
+  /* height: 70px; */
+  position: absolute;
+  top: 0;
+  left: 70px;
+  animation: circle 8s linear infinite;
+}
+
+@keyframes circle {
+  0% {
+    transform: translateY(-40px) translateX(0px) scale(0.9);
+    z-index: 0;
+  }
+  12.5% {
+    transform: translateY(-30px) translateX(-105px) scale(0.912);
+    z-index: 0;
+  }
+  25% {
+    transform: translateY(0px) translateX(-140px) scale(0.95);
+    z-index: 1;
+  }
+  37.5% {
+    transform: translateY(30px) translateX(-105px) scale(0.986);
+    z-index: 1;
+  }
+  45% {
+    transform: translateY(38px) translateX(-40px) scale(1);
+    z-index: 2;
+  }
+  50% {
+    transform: translateY(40px) translateX(0px) scale(1);
+    z-index: 2;
+  }
+  55% {
+    transform: translateY(38px) translateX(40px) scale(1);
+    z-index: 2;
+  }
+  62.5% {
+    transform: translateY(30px) translateX(105px) scale(0.986);
+    z-index: 1;
+  }
+  75% {
+    transform: translateY(0px) translateX(140px) scale(0.95);
+    z-index: 1;
+  }
+  87.5% {
+    transform: translateY(-30px) translateX(105px) scale(0.912);
+    z-index: 0;
+  }
+  100% {
+    transform: translateY(-40px) translateX(0px) scale(0.9);
+    z-index: 0;
+  }
+}
+
+.SubTitle {
+  width: 400px;
+  height: 50px;
+  position: relative;
+}
+
+.Question {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  animation: spin 16s linear infinite;
+  opacity: 0;
+}
+.Question h2 {
+  font-weight: 400;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-10px) scale(1.4);
+    opacity: 0;
+    z-index: -1;
+  }
+  0.8% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+  24.5% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+    z-index: 2;
+  }
+  25% {
+    transform: translateY(0px) scale(0.7);
+    opacity: 0;
+    z-index: -1;
+  }
+  50% {
+    transform: translateY(-10px) scale(1.4);
+    opacity: 0;
+    z-index: -1;
+  }
+  100% {
+    transform: translateY(-10px) scale(1.4);
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+@media (max-width: 499px) {
+  .Logo {
+    width: 100vw;
+  }
+  .SubTitle {
+    width: 100vw;
+  }
+  .SubTitle h2 {
+    width: 100%;
+    padding: 0px 5px;
+    text-align: center;
+  }
+
+  .ActionCall {
+    width: 90vw;
+    height: max-content;
+    top: calc(100vh - 90px);
+  }
+  .ActionCall button {
+    font-size: 140%;
+    padding: 8px 24px;
+  }
+}

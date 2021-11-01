@@ -1,28 +1,15 @@
 import React from "react";
 import classes from "./FirstView.module.css";
-import Left from "./Left";
-import Right from "./Right";
+import TrackView from "./TrackView";
+import InsightView from "./InsightView";
 
-const FirstView = (props: Props) => {
+const FirstView = () => {
   return (
-    <div className={classes.Main}>
-      <div className={classes.Left}>
-        <Left />
-      </div>
-      <div className={classes.RightBackground}>
-        <div className={classes.Right}>
-          <Right />
-        </div>
-      </div>
-      <button onClick={props.onClick} className={classes.Button}>
-        START
-      </button>
+    <div className={[classes.Main, `how-view`].join(` `)}>
+      <TrackView />
+      <InsightView />
     </div>
   );
-};
-
-type Props = {
-  onClick: () => void;
 };
 
 export default FirstView;

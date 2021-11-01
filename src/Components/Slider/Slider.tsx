@@ -118,7 +118,7 @@ const Slider = () => {
                   onClick={() => setSlide(i)}
                   style={{
                     backgroundColor:
-                      Math.abs(slide % 3) === i ? `rgb(236, 54, 141)` : `unset`,
+                      Math.abs(slide % 3) === i ? `rgb(152, 29, 135)` : `unset`,
                   }}
                 ></button>
               );

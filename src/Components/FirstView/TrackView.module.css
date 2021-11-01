@@ -1,0 +1,177 @@
+.Wraper {
+  width: 50vw;
+  height: max-content;
+  margin-bottom: 620px;
+}
+.Static {
+  width: 50vw;
+  height: calc(60vh - 56px);
+  position: relative;
+}
+
+.FixedMain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50vw;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 106px;
+  padding-left: 40px;
+  background-color: white;
+  overflow: visible;
+  transition: opacity 0.2s;
+}
+
+.Par {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  overflow: visible;
+}
+
+.Header {
+  transform: translateX(-100px);
+  transition: transform 0.5s;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-column-gap: 10px;
+  font-family: "Raleway", sans-serif;
+  color: rgb(152, 29, 135);
+  color: rgb(64, 60, 65);
+}
+
+.Show {
+  transform: translateX(0px);
+}
+
+.Par h1 {
+  height: 60px;
+  font-size: 300%;
+  font-weight: 800;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  letter-spacing: -1px;
+  transform: matrix(1, 0, 0, 1.35, 0, 0);
+}
+.Par h2 {
+  height: 30px;
+  font-size: 130%;
+  margin-bottom: 0px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+.Stopwatch {
+  position: absolute;
+  top: 8px;
+  right: -50px;
+  animation: ticking 2s linear 0s infinite both;
+}
+
+.Par p {
+  text-align: center;
+  font-size: 140%;
+  width: 90%;
+  font-weight: 200;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.Option {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: calc(50vw - 40px);
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0px;
+  border-radius: 16px;
+  transition: transform 0.4s;
+}
+
+.FixedTracker {
+  z-index: 0;
+  position: fixed;
+  right: 50px;
+  border: none;
+  transform: scale(0.8) translateY(-20px) translateX(-50px);
+}
+
+.Exp {
+  margin-top: 10px;
+  max-width: 70%;
+  padding: 4px 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.Exp p {
+  font-size: 100%;
+  font-family: "Raleway", sans-serif;
+  font-weight: 300;
+  color: rgb(27, 27, 27);
+  text-align: center;
+}
+
+.TrackerDisplay {
+  opacity: 1;
+  transform: translateX(0px);
+  z-index: 1;
+}
+
+.FixedTrackers {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  height: 100vh;
+  width: 50vw;
+}
+
+@keyframes ticking {
+  0% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+  4% {
+    transform: rotateZ(-15deg) translate(8px, -7px);
+  }
+  46% {
+    transform: rotateZ(-15deg) translate(8px, -7px);
+  }
+  50% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+  54% {
+    transform: rotateZ(15deg) translate(4px, -9px);
+  }
+  96% {
+    transform: rotateZ(15deg) translate(4px, -9px);
+  }
+  100% {
+    transform: rotateZ(0deg) translate(6px, -8px);
+  }
+}
+
+@media (max-width: 499px) {
+  .FixedMain {
+    width: 100vw;
+    padding-top: 80px;
+    padding-left: 20px;
+  }
+  .Stopwatch {
+    display: none;
+  }
+  .Static {
+    width: 100vw;
+  }
+  .Option {
+    width: 90vw;
+  }
+}

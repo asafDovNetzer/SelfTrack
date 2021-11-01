@@ -1,5 +1,4 @@
 import React from "react";
-// import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";
 import classes from "./MainMenu.module.css";
 import Aux from "../../hoc/Auxiliary";
 import * as actions from "../../Store/Actions/ActionsIndex";
@@ -38,11 +37,26 @@ const MainMenu = (props: Props) => {
     props.onSelect(selected);
   };
 
+  const scrollTo = (event: any) => {
+    console.log(event.target.name);
+    const el = document.querySelector(`.${event.target.name}`);
+    console.log(el);
+    el?.scrollIntoView({ behavior: `smooth` });
+  };
+
   return (
     <Aux>
-      <button onClick={goToLanding} className={classes.Header}>
-        Stableyez
-      </button>
+      <div className={classes.LogoCont}>
+        {props.displayMenu || window.location.pathname !== `/` ? (
+          <button onClick={goToLanding}>
+            <img
+              className={classes.Logo}
+              src={`./Images/logo3.svg`}
+              alt="Stableyez"
+            />
+          </button>
+        ) : null}
+      </div>
       {props.user && window.location.pathname === `/app` && (
         <Auxiliary>
           <button
@@ -63,14 +77,26 @@ const MainMenu = (props: Props) => {
           </button>
         </Auxiliary>
       )}
+      <button
+        name="second-view"
+        onClick={scrollTo}
+        className={classes.MenuItem}
+      >
+        Why Us
+      </button>
+      <button name="how-view" onClick={scrollTo} className={classes.MenuItem}>
+        How it Works
+      </button>
       {props.user ? (
         <button onClick={signoutHandler} className={classes.MenuItem}>
           Sign out
         </button>
       ) : (
-        <button onClick={signupHandler} className={classes.MenuItem}>
-          Sign up
-        </button>
+        <Auxiliary>
+          <button onClick={signupHandler} className={classes.MenuItem}>
+            Sign up
+          </button>
+        </Auxiliary>
       )}
     </Aux>
   );
@@ -93,6 +119,7 @@ type PropsFromRedux = ConnectedProps<typeof connector>;
 type Props = PropsFromRedux & {
   onSignup: () => void;
   onCloseSidedrawer: () => void;
+  displayMenu: boolean;
 };
 
 export default connector(MainMenu);

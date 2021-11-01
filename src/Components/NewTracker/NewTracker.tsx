@@ -1,4 +1,4 @@
-import React, { MutableRefObject } from "react";
+import React from "react";
 import classes from "./NewTracker.module.css";
 import FakeTracker from "../TrackersForm/FakeTracker/FakeTracker";
 import icons from "url:../../bootstrap-icons/bootstrap-icons.svg";

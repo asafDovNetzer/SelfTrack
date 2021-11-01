@@ -12,6 +12,7 @@ import SideDrawer from "../../UI/SideDrawer/SideDrawer";
 const Toolbar = (props: PropsFromRedux) => {
   const [displayUserModal, setDisplayUserModal] =
     React.useState<boolean>(false);
+  const [sticky, setSticky] = React.useState<boolean>(false);
 
   const [displayMenu, setDisplayMenu] = React.useState<boolean>(false);
 
@@ -28,8 +29,10 @@ const Toolbar = (props: PropsFromRedux) => {
       // console.log(entry);
       if (!entry.isIntersecting) {
         toolbar.classList.add(classes.Sticky);
+        setSticky(false);
       } else {
         toolbar.classList.remove(classes.Sticky);
+        setSticky(true);
       }
     };
 
@@ -79,20 +82,21 @@ const Toolbar = (props: PropsFromRedux) => {
           <MainMenu
             onCloseSidedrawer={() => {}}
             onSignup={handleSignupButton}
+            displayMenu={!sticky}
           />
         </div>
-        <div>
-          {props.user?.emailVerified && window.location.pathname !== `/app` ? (
-            <button className={classes.MainButton} onClick={goToApp}>
-              App
-            </button>
-          ) : null}
-          {!props.user && window.location.pathname === `/` ? (
-            <button onClick={handleLoginButton} className={classes.MainButton}>
-              Login
-            </button>
-          ) : null}
-        </div>
+        {/* <div> */}
+        {props.user?.emailVerified && window.location.pathname !== `/app` ? (
+          <button className={classes.MainButton} onClick={goToApp}>
+            App
+          </button>
+        ) : null}
+        {!props.user && window.location.pathname === `/` ? (
+          <button onClick={handleLoginButton} className={classes.MainButton}>
+            Login
+          </button>
+        ) : null}
+        {/* </div> */}
         <Modal
           show={displayUserModal && !props.user}
           onHide={() => setDisplayUserModal(false)}
@@ -103,6 +107,7 @@ const Toolbar = (props: PropsFromRedux) => {
           <MainMenu
             onCloseSidedrawer={() => setDisplayMenu(false)}
             onSignup={handleSignupButton}
+            displayMenu={true}
           />
         </SideDrawer>
       </div>

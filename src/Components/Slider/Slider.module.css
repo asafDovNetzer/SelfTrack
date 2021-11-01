@@ -1,5 +1,5 @@
 .SliderWide {
-  padding-top: 800px;
+  padding-top: 300px;
   margin-bottom: 200px;
   width: 100vw;
   height: 380px;
@@ -7,7 +7,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  transform: translateY(-800px);
+  /* transform: translateY(-800px); */
   z-index: 1;
   background-image: linear-gradient(to top, white, transparent);
 }
@@ -41,7 +41,7 @@
 .Dots button {
   border-radius: 50%;
   height: 17px;
-  border: 3px solid rgb(236, 54, 141);
+  border: 3px solid rgb(152, 29, 135);
   background-color: transparent;
 }
 
@@ -88,13 +88,13 @@
 .SlideButton {
   border: none;
   background-color: transparent;
-  color: rgb(236, 54, 141);
+  color: rgb(152, 29, 135);
   outline: none;
 }
 
 .Testamony strong {
   font-size: 300%;
-  color: rgb(68, 3, 129);
+  color: rgb(152, 29, 135);
 }
 
 .Img {
